@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tirada de Tarot Estelar</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #1c1b2f;
+      color: #f0e6ff;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #dabfff;
+    }
+
+    .btn {
+      background-color: #9c27b0;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #7b1fa2;
+    }
+
+    .card {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #2e2c47;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #8e44ad;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    img {
+      max-width: 200px;
+      margin: 20px 0;
+    }
+
+    .ad {
+      margin: 40px 0;
+      padding: 20px;
+      background: #3d395e;
+      border-radius: 8px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    a {
+      color: #ffcaff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tu Tirada de Tarot</h1>
+  <p>Conecta con tu intuición y haz clic para recibir tu mensaje de hoy.</p>
+  <button class="btn" onclick="tirarCarta()">Tirar una Carta</button>
+
+  <div id="resultado" class="card" style="display: none;">
+    <h2 id="nombreCarta"></h2>
+    <img id="imagenCarta" src="" alt="Carta de Tarot" />
+    <p id="significadoCarta"></p>
+  </div>
+
+  <div class="ad">
+    <!-- Aquí puedes insertar el código de Google AdSense -->
+    <p>Publicidad mágica ✨</p>
+  </div>
+
+  <p>¿Te gustó la tirada? <a href="https://www.buymeacoffee.com/tuusuario" target="_blank">Invítame un café 💖</a></p>
+
+  <footer>
+    <p>© 2025 Tarot Estelar - Sitio con fines espirituales solamente</p>
+  </footer>
+
+  <script>
+    const cartas = [
+      {
+        nombre: "El Loco",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RWS_Tarot_00_Fool.jpg/300px-RWS_Tarot_00_Fool.jpg",
+        significado: "Nuevos comienzos, aventura, espontaneidad. Confía en el viaje."
+      },
+      {
+        nombre: "La Emperatriz",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/RWS_Tarot_03_Empress.jpg/300px-RWS_Tarot_03_Empress.jpg",
+        significado: "Abundancia, fertilidad, creatividad. Tiempo de cosechar y nutrir."
+      },
+      {
+        nombre: "La Muerte",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/RWS_Tarot_13_Death.jpg/300px-RWS_Tarot_13_Death.jpg",
+        significado: "Transformación, fin de una etapa. Deja ir para renacer."
+      },
+      {
+        nombre: "La Estrella",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/RWS_Tarot_17_Star.jpg/300px-RWS_Tarot_17_Star.jpg",
+        significado: "Esperanza, guía espiritual, inspiración. Confía en el universo."
+      }
+    ];
+
+    function tirarCarta() {
+      const carta = cartas[Math.floor(Math.random() * cartas.length)];
+      document.getElementById("nombreCarta").textContent = carta.nombre;
+      document.getElementById("imagenCarta").src = carta.imagen;
+      document.getElementById("significadoCarta").textContent = carta.significado;
+      document.getElementById("resultado").style.display = "block";
+    }
+  </script>
+</body>
+</html>
