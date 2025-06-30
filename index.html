@@ -3,92 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tirada de Tarot Estelar</title>
+  <title>Tarot Estelar</title>
   <style>
     body {
-      font-family: 'Georgia', serif;
-      background-color: #1c1b2f;
-      color: #f0e6ff;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#111, #222);
+      color: #fff;
       text-align: center;
-      padding: 40px;
+      padding: 2rem;
     }
-
-    h1 {
-      font-size: 2.5rem;
-      color: #dabfff;
-    }
-
-    .btn {
-      background-color: #9c27b0;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    .btn:hover {
-      background-color: #7b1fa2;
-    }
-
-    .card {
-      margin-top: 30px;
-      padding: 20px;
-      background-color: #2e2c47;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #8e44ad;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     img {
-      max-width: 200px;
-      margin: 20px 0;
+      max-width: 300px;
+      margin-top: 1rem;
     }
-
-    .ad {
-      margin: 40px 0;
-      padding: 20px;
-      background: #3d395e;
+    #significadoCarta {
+      max-width: 600px;
+      margin: 1rem auto;
+      font-style: italic;
+      line-height: 1.5;
+      background: #333;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    button {
+      background: #6a0dad;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
       border-radius: 8px;
+      cursor: pointer;
+      margin-top: 2rem;
     }
-
-    footer {
-      margin-top: 60px;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    a {
-      color: #ffcaff;
+    button:hover {
+      background: #8b30ff;
     }
   </style>
 </head>
 <body>
 
-  <h1>Tu carta de hoy</h1>
-  <p>Conecta con tu energía y elige una carta. El tarot tiene un mensaje para ti.</p>
-  <button class="btn" onclick="tirarCarta()">Mi carta</button>
+  <h1>Tarot Estelar</h1>
+  <p>Haz clic en el botón para descubrir tu carta:</p>
 
-  <div id="resultado" class="card" style="display: none;">
+  <button onclick="tirarCarta()">Tirar una carta</button>
+
+  <div id="resultado" style="display:none;">
     <h2 id="nombreCarta"></h2>
-    <img id="imagenCarta" src="" alt="Carta de Tarot" />
+    <img id="imagenCarta" src="" alt="Carta del tarot">
     <p id="significadoCarta"></p>
   </div>
-
-  <div class="ad">
-    <!-- Aquí puedes insertar el código de Google AdSense -->
-    <p>Publicidad mágica ✨</p>
-  </div>
-
-  <p>¿Te gustó la tirada? <a href="https://www.buymeacoffee.com/tuusuario" target="_blank">Invítame un café 💖</a></p>
-
-  <footer>
-    <p>© 2025 Tarot Estelar - Sitio con fines espirituales solamente</p>
-  </footer>
 
   <script>
     const cartas = [
@@ -100,30 +63,17 @@
       {
         nombre: "La Emperatriz",
         imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/RWS_Tarot_03_Empress.jpg/300px-RWS_Tarot_03_Empress.jpg",
-        significado: "Palabras clave: Fertilidad – Creatividad – Abundancia – Cuidado
-
-Mensaje intuitivo:
-La vida florece en ti y a tu alrededor. Este es un momento para nutrir, crear y abrazar la belleza. Eres canal de abundancia. Confía en tu capacidad de sostener y dar forma a lo que amas.
-
-Consejo práctico:
-Rodéate de cosas hermosas. Planta una semilla literal o simbólica. Da forma a una idea con amor maternal."
+        significado: "Palabras clave: Fertilidad – Creatividad – Abundancia – Cuidado. La vida florece en ti y a tu alrededor. Este es un momento para nutrir, crear y abrazar la belleza. Eres canal de abundancia. Confía en tu capacidad de sostener y dar forma a lo que amas. Consejo práctico: rodéate de cosas hermosas. Planta una semilla literal o simbólica. Da forma a una idea con amor maternal."
       },
       {
         nombre: "La Muerte",
         imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/RWS_Tarot_13_Death.jpg/300px-RWS_Tarot_13_Death.jpg",
-        significado: "Transformación, fin de una etapa. Deja ir para renacer.
-Cambio en las finanzas:
-La Muerte puede indicar una reducción de recursos económicos, pero también la oportunidad de reevaluar prioridades y encontrar equilibrio financiero. 
-Cambio en los valores:
-Puede haber un replanteamiento de lo que es importante en la vida, llevando a ajustes espirituales y prácticos. 
-Resistencia al cambio:
-En algunos casos, la carta puede mostrar resistencia a soltar el pasado, lo que puede dificultar el proceso de transformación. "
+        significado: "Transformación, fin de una etapa. Deja ir para renacer. Cambio en las finanzas: puede indicar una reducción de recursos económicos, pero también la oportunidad de reevaluar prioridades y encontrar equilibrio financiero. Cambio en los valores: puede haber un replanteamiento de lo que es importante en la vida, llevando a ajustes espirituales y prácticos. También puede mostrar resistencia al cambio, lo que puede dificultar el proceso de transformación."
       },
       {
         nombre: "La Estrella",
         imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/RWS_Tarot_17_Star.jpg/300px-RWS_Tarot_17_Star.jpg",
-        significado: "Esperanza, guía espiritual, inspiración. Confía en el universo.
-        simboliza la esperanza, la renovación, la curación y la guía espiritual. Representa un momento de positividad, fe y armonía, tanto interna como externa, tras un período difícil. La Estrella nos anima a confiar en nuestra intuición, mantener la esperanza y creer en un futuro mejor. "
+        significado: "Esperanza, guía espiritual, inspiración. Confía en el universo. Simboliza la esperanza, la renovación, la curación y la guía espiritual. Representa un momento de positividad, fe y armonía, tanto interna como externa, tras un período difícil. La Estrella nos anima a confiar en nuestra intuición, mantener la esperanza y creer en un futuro mejor."
       }
     ];
 
@@ -135,5 +85,6 @@ En algunos casos, la carta puede mostrar resistencia a soltar el pasado, lo que 
       document.getElementById("resultado").style.display = "block";
     }
   </script>
+
 </body>
 </html>
