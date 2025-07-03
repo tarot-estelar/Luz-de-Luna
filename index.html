@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luz de Luna - Tarot</title>
+<!-- html2canvas para capturar el div -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
   <style>
     body {
       font-family: 'Georgia', serif;
@@ -299,9 +302,31 @@
     const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
     if (savedData && savedData.fecha === today) {
       mostrarCarta(savedData.carta);
+    } 
+
+    function generarImagen() {
+      const elemento = document.getElementById("resultado");
+
+      html2canvas(elemento).then(canvas => {
+        canvas.toBlob(blob => {
+          const archivo = new File([blob], 'mi-carta.png', { type: 'image/png' });
+
+          if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
+            navigator.share({
+              title: 'Mi carta del día',
+              text: 'Compartí tu carta del tarot ✨',
+              files: [archivo]
+            }).catch(err => alert("Error al compartir: " + err));
+          } else {
+            const enlace = document.createElement('a');
+            enlace.href = URL.createObjectURL(blob);
+            enlace.download = "mi-carta.png";
+            enlace.click();
+          }
+        });
+      });
     }
-  });
-</script>
+  </script>
 
 </body>
 </html>
