@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luz de Luna - Tarot</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  
   <style>
     body {
       font-family: 'Georgia', serif;
@@ -79,7 +82,7 @@
     <p><strong>🌟Mensaje:</strong> <span id="resumenCarta"></span></p>
     <p><strong>🔑Palabras clave:</strong> <span id="palabrasClaveCarta"></span></p>
     <p><strong>🧭Consejo:</strong> <span id="consejoCarta"></span></p>
-    <button class="btn" onclick="compartirCarta()" id="botonCompartir" style="display: none;">Compartir tu carta</button>
+    <button class="btn" onclick="generarImagen()" id="botonCompartir" style="display: none;">Compartir tu carta</button>
   </div>
 
   <div class="ad">
@@ -301,6 +304,31 @@
       mostrarCarta(savedData.carta);
     }
   });
+    function generarImagen() {
+  const elemento = document.getElementById("resultado");
+
+  html2canvas(elemento).then(canvas => {
+    const imagen = canvas.toDataURL("image/png");
+
+    // Intentar compartir si el navegador lo soporta
+    if (navigator.canShare && navigator.canShare({ files: [] })) {
+      canvas.toBlob(blob => {
+        const archivo = new File([blob], 'mi-carta.png', { type: 'image/png' });
+        navigator.share({
+          files: [archivo],
+          title: 'Mi carta del día',
+          text: 'Compartí tu carta del tarot ✨'
+        }).catch(err => console.error("Error al compartir:", err));
+      });
+    } else {
+      // Alternativa: mostrar la imagen para descargar manualmente
+      const link = document.createElement('a');
+      link.href = imagen;
+      link.download = 'mi-carta.png';
+      link.click();
+    }
+  });
+}
 </script>
   
 </body>
