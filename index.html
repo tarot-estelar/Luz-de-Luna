@@ -250,7 +250,33 @@
       }
     ];
 
-    function compartirCarta() {
+  function mostrarCarta(carta) {
+    document.getElementById("nombreCarta").textContent = carta.nombre;
+    document.getElementById("imagenCarta").src = carta.imagen;
+    document.getElementById("resumenCarta").textContent = carta.resumen;
+    document.getElementById("palabrasClaveCarta").textContent = carta.palabrasClave;
+    document.getElementById("consejoCarta").textContent = carta.consejo;
+    document.getElementById("resultado").style.display = "block";
+    document.getElementById("botonCompartir").style.display = "inline-block";
+  }
+
+  function tirarCarta() {
+    const today = new Date().toISOString().split('T')[0];
+    const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
+
+    if (savedData && savedData.fecha === today) {
+      alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
+      mostrarCarta(savedData.carta);
+      return;
+    }
+
+    const carta = cartas[Math.floor(Math.random() * cartas.length)];
+    localStorage.setItem('cartaDelDia', JSON.stringify({ fecha: today, carta }));
+    mostrarCarta(carta);
+  }
+
+
+  function mostrarCarta(carta) {
     const carta = document.getElementById("nombreCarta").textContent;
     const resumen = document.getElementById("resumenCarta").textContent;
     const palabras = document.getElementById("palabrasClaveCarta").textContent;
