@@ -250,45 +250,33 @@
       }
     ];
 
-    function tirarCarta() {
-      const today = new Date().toISOString().split('T')[0];
-      const lastPick = localStorage.getItem('fechaCarta');
-
-      if (lastPick === today) {
-        alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
-        return;
-      }
-
-      const carta = cartas[Math.floor(Math.random() * cartas.length)];
-      document.getElementById("nombreCarta").textContent = carta.nombre;
-      document.getElementById("imagenCarta").src = carta.imagen;
-      document.getElementById("resumenCarta").textContent = carta.resumen;
-      document.getElementById("palabrasClaveCarta").textContent = carta.palabrasClave;
-      document.getElementById("consejoCarta").textContent = carta.consejo;
-      document.getElementById("resultado").style.display = "block";
-      document.getElementById("botonCompartir").style.display = "inline-block";
-
-      localStorage.setItem('fechaCarta', today);
-    }
-
     function compartirCarta() {
-      const carta = document.getElementById("nombreCarta").textContent;
-      const resumen = document.getElementById("resumenCarta").textContent;
-      const palabras = document.getElementById("palabrasClaveCarta").textContent;
-      const consejo = document.getElementById("consejoCarta").textContent;
-      const mensaje = `Mi carta del día es ${carta}: 🌟 ${resumen}\n🔑 ${palabras}\n🧭 ${consejo}`;
+    const carta = document.getElementById("nombreCarta").textContent;
+    const resumen = document.getElementById("resumenCarta").textContent;
+    const palabras = document.getElementById("palabrasClaveCarta").textContent;
+    const consejo = document.getElementById("consejoCarta").textContent;
+    const mensaje = `Mi carta del día es ${carta}: 🌟 ${resumen}\n🔑 ${palabras}\n🧭 ${consejo}`;
 
-      if (navigator.share) {
-        navigator.share({
-          title: 'Mi carta del día',
-          text: mensaje,
-          url: window.location.href
-        });
-      } else {
-        alert("Compartí este mensaje:\n" + mensaje);
-      }
+    if (navigator.share) {
+      navigator.share({
+        title: 'Mi carta del día',
+        text: mensaje,
+        url: window.location.href
+      });
+    } else {
+      alert("Compartí este mensaje:\n" + mensaje);
     }
-  </script>
+  }
+
+  // Mostrar automáticamente si ya sacó una carta hoy
+  window.addEventListener('DOMContentLoaded', () => {
+    const today = new Date().toISOString().split('T')[0];
+    const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
+    if (savedData && savedData.fecha === today) {
+      mostrarCarta(savedData.carta);
+    }
+  });
+</script>
 
 </body>
 </html>
