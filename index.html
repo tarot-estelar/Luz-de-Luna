@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luz de Luna - Tarot</title>
-<!-- html2canvas para capturar el div -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-
+  <style>/* tu estilo actual */</style>
+</head>
+<body>
   <style>
     body {
       font-family: 'Georgia', serif;
@@ -250,7 +250,7 @@
         resumen: "Plenitud, cierre de ciclo y éxito.",
         palabrasClave: "Integración – Cumplimiento – Unidad",
         consejo: "Celebrá lo que lograste."
-      }
+      },
     ];
 
   function mostrarCarta(carta) {
@@ -263,22 +263,26 @@
     document.getElementById("botonCompartir").style.display = "inline-block";
   }
 
-  function tirarCarta() {
-    const today = new Date().toISOString().split('T')[0];
-    const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
+   function tirarCarta() {
+      const today = new Date().toISOString().split('T')[0];
+      if (localStorage.getItem('fechaCarta') === today) {
+        alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
+        return;
+      }
+      const carta = cartas[Math.floor(Math.random() * cartas.length)];
+      if (!carta) { console.error("No hay cartas definidas"); return; }
 
-    if (savedData && savedData.fecha === today) {
-      alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
-      mostrarCarta(savedData.carta);
-      return;
+      document.getElementById("nombreCarta").textContent = carta.nombre;
+      document.getElementById("imagenCarta").src = carta.imagen;
+      document.getElementById("resumenCarta").textContent = carta.resumen;
+      document.getElementById("palabrasClaveCarta").textContent = carta.palabrasClave;
+      document.getElementById("consejoCarta").textContent = carta.consejo;
+      document.getElementById("resultado").style.display = "block";
+      document.getElementById("botonCompartir").style.display = "inline-block";
+      localStorage.setItem('fechaCarta', today);
     }
 
-    const carta = cartas[Math.floor(Math.random() * cartas.length)];
-    localStorage.setItem('cartaDelDia', JSON.stringify({ fecha: today, carta }));
-    mostrarCarta(carta);
-  }
-
-  function compartirCarta() {
+    function compartirCarta() {
     const carta = document.getElementById("nombreCarta").textContent;
     const resumen = document.getElementById("resumenCarta").textContent;
     const palabras = document.getElementById("palabrasClaveCarta").textContent;
