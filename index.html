@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -93,164 +93,163 @@
   </footer>
 
   <script>
-  const cartas = [
-    {
-      nombre: "El Loco",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20loco.jpg",
-      resumen: "Confía en el viaje.",
-      palabrasClave: "Nuevos comienzos, aventura, espontaneidad",
-      consejo: "Soltá el miedo. Animate a dar el salto sin certezas."
-    },
-    {
-      nombre: "El Mago",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20mago.jpg",
-      resumen: "Tenés todos los recursos para manifestar lo que deseás.",
-      palabrasClave: "Voluntad – Acción – Poder – Creatividad",
-      consejo: "Canalizá tu energía. Tomá el control y hacé que las cosas sucedan."
-    },
-    {
-      nombre: "La Sacerdotisa",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20sacerdotista.jpg",
-      resumen: "El conocimiento está dentro tuyo.",
-      palabrasClave: "Intuición – Misterio – Sabiduría interior – Paciencia",
-      consejo: "Escuchá tu voz interna antes de actuar."
-    },
-    {
-      nombre: "La Emperatriz",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20emperatriz.jpg",
-      resumen: "Abundancia, fertilidad, creatividad.",
-      palabrasClave: "Belleza – Cuidado – Ciclos naturales",
-      consejo: "Cuidá lo que estás gestando. Todo florecerá."
-    },
-    {
-      nombre: "El Emperador",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20emperador.jpg",
-      resumen: "Orden, estructura y autoridad.",
-      palabrasClave: "Estabilidad – Disciplina – Protección – Responsabilidad",
-      consejo: "Organizate y tomá el mando con sabiduría."
-    },
-    {
-      nombre: "El Hierofante",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20hierofante.jpg",
-      resumen: "Tradición, guía espiritual y aprendizaje.",
-      palabrasClave: "Enseñanza – Valores – Conexión espiritual – Comunidad",
-      consejo: "Buscá guía o compartí tu experiencia."
-    },
-    {
-      nombre: "Los Enamorados",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/los%20enamorados.jpg",
-      resumen: "Unión, decisiones y armonía.",
-      palabrasClave: "Amor – Dualidad – Elección – Conexión",
-      consejo: "Elegí desde el amor, no desde el miedo."
-    },
-    {
-      nombre: "El Carro",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20carro.jpg",
-      resumen: "Victoria sobre obstáculos.",
-      palabrasClave: "Voluntad – Movimiento – Determinación – Éxito",
-      consejo: "Definí tu objetivo y seguí adelante con firmeza."
-    },
-    {
-      nombre: "La Justicia",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20justicia%202.jpg",
-      resumen: "Equilibrio, decisiones y karma.",
-      palabrasClave: "Verdad – Justicia – Responsabilidad",
-      consejo: "Sé honesto con vos y con los demás."
-    },
-    {
-      nombre: "El Ermitaño",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/el%20ermita%C3%B1o.jpg",
-      resumen: "Búsqueda interior y sabiduría.",
-      palabrasClave: "Introspección – Silencio – Guía interna",
-      consejo: "Tomate un tiempo para vos. Escuchate."
-    },
-    {
-      nombre: "La Rueda de la Fortuna",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20rueda%20de%20la%20fortuna%202.jpg",
-      resumen: "Cambio y ciclos.",
-      palabrasClave: "Destino – Suerte – Oportunidad",
-      consejo: "Confiá en los giros del destino."
-    },
-    {
-      nombre: "La Fuerza",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20fuerza.jpg",
-      resumen: "Dominio propio desde la dulzura.",
-      palabrasClave: "Coraje – Compasión – Control interno",
-      consejo: "Tu fuerza está en la calma."
-    },
-    {
-      nombre: "El Colgado",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20colgado.jpg",
-      resumen: "Rendición y cambio de perspectiva.",
-      palabrasClave: "Pausa – Entrega – Nueva visión",
-      consejo: "Esperá y mirá desde otro ángulo."
-    },
-    {
-      nombre: "La Muerte",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20muerte.jpg",
-      resumen: "Transformación y fin de ciclo.",
-      palabrasClave: "Renacimiento – Cambio – Liberación",
-      consejo: "Soltá lo que ya cumplió su etapa."
-    },
-    {
-      nombre: "La Templanza",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20templanza.jpg",
-      resumen: "Equilibrio, sanación e integración.",
-      palabrasClave: "Paz – Armonía – Moderación",
-      consejo: "Buscá el balance en todo lo que hagas."
-    },
-    {
-      nombre: "El Diablo",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20diablo.jpg",
-      resumen: "Apegos, tentaciones y sombras.",
-      palabrasClave: "Dependencia – Deseo – Ilusión",
-      consejo: "Reconocé tus cadenas y elegí liberarte."
-    },
-    {
-      nombre: "La Torre",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20torre.jpg",
-      resumen: "Ruptura inesperada que libera.",
-      palabrasClave: "Crisis – Despertar – Liberación",
-      consejo: "Agradecé la verdad que se revela."
-    },
-    {
-      nombre: "La Estrella",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20estrella%202.jpg",
-      resumen: "Esperanza, guía espiritual, inspiración.",
-      palabrasClave: "Fe – Armonía – Renovación",
-      consejo: "Confiá en el universo."
-    },
-    {
-      nombre: "La Luna",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20luna%203.png",
-      resumen: "Intuición, confusión y misterio.",
-      palabrasClave: "Ciclos – Emociones – Ilusión",
-      consejo: "No tomes decisiones en la niebla."
-    },
-    {
-      nombre: "El Sol",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20sol.jpg",
-      resumen: "Alegría, claridad y éxito.",
-      palabrasClave: "Vitalidad – Verdad – Felicidad",
-      consejo: "Disfrutá y compartí tu luz."
-    },
-    {
-      nombre: "El Juicio",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/el%20juicio.jpg",
-      resumen: "Llamado interior y despertar.",
-      palabrasClave: "Redención – Decisión – Evaluación",
-      consejo: "Escuchá tu verdad y actuá desde el alma."
-    },
-    {
-      nombre: "El Mundo",
-      imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20mundo.jpg",
-      resumen: "Plenitud, cierre de ciclo y éxito.",
-      palabrasClave: "Integración – Cumplimiento – Unidad",
-      consejo: "Celebrá lo que lograste."
-    }
-  ];
-</script>
+    const cartas = [
+      {
+        nombre: "El Loco",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20loco.jpg",
+        resumen: "Confía en el viaje.",
+        palabrasClave: "Nuevos comienzos, aventura, espontaneidad",
+        consejo: "Soltá el miedo. Animate a dar el salto sin certezas."
+      },
+      {
+        nombre: "El Mago",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20mago.jpg",
+        resumen: "Tenés todos los recursos para manifestar lo que deseás.",
+        palabrasClave: "Voluntad – Acción – Poder – Creatividad",
+        consejo: "Canalizá tu energía. Tomá el control y hacé que las cosas sucedan."
+      },
+      {
+        nombre: "La Sacerdotisa",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20sacerdotista.jpg",
+        resumen: "El conocimiento está dentro tuyo.",
+        palabrasClave: "Intuición – Misterio – Sabiduría interior – Paciencia",
+        consejo: "Escuchá tu voz interna antes de actuar."
+      },
+      {
+        nombre: "La Emperatriz",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20emperatriz.jpg",
+        resumen: "Abundancia, fertilidad, creatividad.",
+        palabrasClave: "Belleza – Cuidado – Ciclos naturales",
+        consejo: "Cuidá lo que estás gestando. Todo florecerá."
+      },
+      {
+        nombre: "El Emperador",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20emperador.jpg",
+        resumen: "Orden, estructura y autoridad.",
+        palabrasClave: "Estabilidad – Disciplina – Protección – Responsabilidad",
+        consejo: "Organizate y tomá el mando con sabiduría."
+      },
+      {
+        nombre: "El Hierofante",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20hierofante.jpg",
+        resumen: "Tradición, guía espiritual y aprendizaje.",
+        palabrasClave: "Enseñanza – Valores – Conexión espiritual – Comunidad",
+        consejo: "Buscá guía o compartí tu experiencia."
+      },
+      {
+        nombre: "Los Enamorados",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/los%20enamorados.jpg",
+        resumen: "Unión, decisiones y armonía.",
+        palabrasClave: "Amor – Dualidad – Elección – Conexión",
+        consejo: "Elegí desde el amor, no desde el miedo."
+      },
+      {
+        nombre: "El Carro",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20carro.jpg",
+        resumen: "Victoria sobre obstáculos.",
+        palabrasClave: "Voluntad – Movimiento – Determinación – Éxito",
+        consejo: "Definí tu objetivo y seguí adelante con firmeza."
+      },
+      {
+        nombre: "La Justicia",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20justicia%202.jpg",
+        resumen: "Equilibrio, decisiones y karma.",
+        palabrasClave: "Verdad – Justicia – Responsabilidad",
+        consejo: "Sé honesto con vos y con los demás."
+      },
+      {
+        nombre: "El Ermitaño",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/el%20ermita%C3%B1o.jpg",
+        resumen: "Búsqueda interior y sabiduría.",
+        palabrasClave: "Introspección – Silencio – Guía interna",
+        consejo: "Tomate un tiempo para vos. Escuchate."
+      },
+      {
+        nombre: "La Rueda de la Fortuna",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20rueda%20de%20la%20fortuna%202.jpg",
+        resumen: "Cambio y ciclos.",
+        palabrasClave: "Destino – Suerte – Oportunidad",
+        consejo: "Confiá en los giros del destino."
+      },
+      {
+        nombre: "La Fuerza",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20fuerza.jpg",
+        resumen: "Dominio propio desde la dulzura.",
+        palabrasClave: "Coraje – Compasión – Control interno",
+        consejo: "Tu fuerza está en la calma."
+      },
+      {
+        nombre: "El Colgado",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20colgado.jpg",
+        resumen: "Rendición y cambio de perspectiva.",
+        palabrasClave: "Pausa – Entrega – Nueva visión",
+        consejo: "Esperá y mirá desde otro ángulo."
+      },
+      {
+        nombre: "La Muerte",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20muerte.jpg",
+        resumen: "Transformación y fin de ciclo.",
+        palabrasClave: "Renacimiento – Cambio – Liberación",
+        consejo: "Soltá lo que ya cumplió su etapa."
+      },
+      {
+        nombre: "La Templanza",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20templanza.jpg",
+        resumen: "Equilibrio, sanación e integración.",
+        palabrasClave: "Paz – Armonía – Moderación",
+        consejo: "Buscá el balance en todo lo que hagas."
+      },
+      {
+        nombre: "El Diablo",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20diablo.jpg",
+        resumen: "Apegos, tentaciones y sombras.",
+        palabrasClave: "Dependencia – Deseo – Ilusión",
+        consejo: "Reconocé tus cadenas y elegí liberarte."
+      },
+      {
+        nombre: "La Torre",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20torre.jpg",
+        resumen: "Ruptura inesperada que libera.",
+        palabrasClave: "Crisis – Despertar – Liberación",
+        consejo: "Agradecé la verdad que se revela."
+      },
+      {
+        nombre: "La Estrella",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20estrella%202.jpg",
+        resumen: "Esperanza, guía espiritual, inspiración.",
+        palabrasClave: "Fe – Armonía – Renovación",
+        consejo: "Confiá en el universo."
+      },
+      {
+        nombre: "La Luna",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/la%20luna%203.png",
+        resumen: "Intuición, confusión y misterio.",
+        palabrasClave: "Ciclos – Emociones – Ilusión",
+        consejo: "No tomes decisiones en la niebla."
+      },
+      {
+        nombre: "El Sol",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20sol.jpg",
+        resumen: "Alegría, claridad y éxito.",
+        palabrasClave: "Vitalidad – Verdad – Felicidad",
+        consejo: "Disfrutá y compartí tu luz."
+      },
+      {
+        nombre: "El Juicio",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/e5eea9356ddd899ef598dc87873faa1fd81b45e2/el%20juicio.jpg",
+        resumen: "Llamado interior y despertar.",
+        palabrasClave: "Redención – Decisión – Evaluación",
+        consejo: "Escuchá tu verdad y actuá desde el alma."
+      },
+      {
+        nombre: "El Mundo",
+        imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/el%20mundo.jpg",
+        resumen: "Plenitud, cierre de ciclo y éxito.",
+        palabrasClave: "Integración – Cumplimiento – Unidad",
+        consejo: "Celebrá lo que lograste."
+      }
     ];
+
     function tirarCarta() {
       const today = new Date().toISOString().split('T')[0];
       const lastPick = localStorage.getItem('fechaCarta');
@@ -293,4 +292,3 @@
 
 </body>
 </html>
-
