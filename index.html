@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luz de Luna - Tarot</title>
-  <style>/* tu estilo actual */</style>
-</head>
-<body>
   <style>
     body {
       font-family: 'Georgia', serif;
@@ -250,10 +247,10 @@
         resumen: "Plenitud, cierre de ciclo y éxito.",
         palabrasClave: "Integración – Cumplimiento – Unidad",
         consejo: "Celebrá lo que lograste."
-      },
+      }
     ];
 
-  function mostrarCarta(carta) {
+      function mostrarCarta(carta) {
     document.getElementById("nombreCarta").textContent = carta.nombre;
     document.getElementById("imagenCarta").src = carta.imagen;
     document.getElementById("resumenCarta").textContent = carta.resumen;
@@ -263,26 +260,22 @@
     document.getElementById("botonCompartir").style.display = "inline-block";
   }
 
-   function tirarCarta() {
-      const today = new Date().toISOString().split('T')[0];
-      if (localStorage.getItem('fechaCarta') === today) {
-        alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
-        return;
-      }
-      const carta = cartas[Math.floor(Math.random() * cartas.length)];
-      if (!carta) { console.error("No hay cartas definidas"); return; }
+  function tirarCarta() {
+    const today = new Date().toISOString().split('T')[0];
+    const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
 
-      document.getElementById("nombreCarta").textContent = carta.nombre;
-      document.getElementById("imagenCarta").src = carta.imagen;
-      document.getElementById("resumenCarta").textContent = carta.resumen;
-      document.getElementById("palabrasClaveCarta").textContent = carta.palabrasClave;
-      document.getElementById("consejoCarta").textContent = carta.consejo;
-      document.getElementById("resultado").style.display = "block";
-      document.getElementById("botonCompartir").style.display = "inline-block";
-      localStorage.setItem('fechaCarta', today);
+    if (savedData && savedData.fecha === today) {
+      alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
+      mostrarCarta(savedData.carta);
+      return;
     }
 
-    function compartirCarta() {
+    const carta = cartas[Math.floor(Math.random() * cartas.length)];
+    localStorage.setItem('cartaDelDia', JSON.stringify({ fecha: today, carta }));
+    mostrarCarta(carta);
+  }
+
+  function compartirCarta() {
     const carta = document.getElementById("nombreCarta").textContent;
     const resumen = document.getElementById("resumenCarta").textContent;
     const palabras = document.getElementById("palabrasClaveCarta").textContent;
@@ -306,31 +299,9 @@
     const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
     if (savedData && savedData.fecha === today) {
       mostrarCarta(savedData.carta);
-    } 
-
-    function generarImagen() {
-      const elemento = document.getElementById("resultado");
-
-      html2canvas(elemento).then(canvas => {
-        canvas.toBlob(blob => {
-          const archivo = new File([blob], 'mi-carta.png', { type: 'image/png' });
-
-          if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
-            navigator.share({
-              title: 'Mi carta del día',
-              text: 'Compartí tu carta del tarot ✨',
-              files: [archivo]
-            }).catch(err => alert("Error al compartir: " + err));
-          } else {
-            const enlace = document.createElement('a');
-            enlace.href = URL.createObjectURL(blob);
-            enlace.download = "mi-carta.png";
-            enlace.click();
-          }
-        });
-      });
     }
-  </script>
-
+  });
+</script>
+  
 </body>
 </html>
