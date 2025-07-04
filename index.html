@@ -67,7 +67,18 @@
 
     a {
       color: #ffcaff;
-    }
+      
+        .tituloCompartir {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 12px;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 6px;
+    background-color: rgba(255,255,255,0.1);
+    font-weight: bold;
+    color: #f0e6ff;
+    font-size: 1rem;
+      }
   </style>
 </head>
 <body>
@@ -80,7 +91,7 @@
     <h2 id="nombreCarta"></h2>
     <!-- Agregamos crossorigin para html2canvas -->
     <img id="imagenCarta" crossorigin="anonymous" src="" alt="Carta de Tarot" />
-  <p><strong>Luz de Luna - Tarot</strong> </span></p>
+  <div class="tituloCompartir">Luz de Luna – Tarot</div>
    <p><strong>🌟Mensaje:</strong> <span id="resumenCarta"></span></p>
     <p><strong>🔑Palabras clave:</strong> <span id="palabrasClaveCarta"></span></p>
     <p><strong>🧭Consejo:</strong> <span id="consejoCarta"></span></p>
