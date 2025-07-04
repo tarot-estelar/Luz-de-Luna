@@ -76,13 +76,16 @@
   <p>Conecta con tu energía hoy.✨</p>
   <button class="btn" onclick="tirarCarta()">Tu Carta</button>
 
-  <div id="resultado" class="card" style="display: none;">
+ <div id="resultado" class="card" style="display: none;">
     <h2 id="nombreCarta"></h2>
-    <img id="imagenCarta" src="" alt="Carta de Tarot" />
+    <!-- Agregamos crossorigin para html2canvas -->
+    <img id="imagenCarta" crossorigin="anonymous" src="" alt="Carta de Tarot" />
     <p><strong>🌟Mensaje:</strong> <span id="resumenCarta"></span></p>
     <p><strong>🔑Palabras clave:</strong> <span id="palabrasClaveCarta"></span></p>
     <p><strong>🧭Consejo:</strong> <span id="consejoCarta"></span></p>
-    <button class="btn" onclick="generarImagen()" id="botonCompartir" style="display: none;">Compartir tu carta</button>
+    <button class="btn" onclick="generarImagen()" id="botonCompartir" style="display: none;">
+      Compartir tu carta
+    </button>
   </div>
 
   <div class="ad">
@@ -304,32 +307,46 @@
       mostrarCarta(savedData.carta);
     }
   });
-    function generarImagen() {
-  const elemento = document.getElementById("resultado");
+  function generarImagen() {
+      const elemento = document.getElementById("resultado");
 
-  html2canvas(elemento).then(canvas => {
-    const imagen = canvas.toDataURL("image/png");
+      html2canvas(elemento, {
+        useCORS: true,       // permite usar crossorigin
+        allowTaint: false    // no taints the canvas
+      }).then(canvas => {
+        canvas.toBlob(blob => {
+          const archivo = new File([blob], 'mi-carta.png', { type: 'image/png' });
 
-    // Intentar compartir si el navegador lo soporta
-    if (navigator.canShare && navigator.canShare({ files: [] })) {
-      canvas.toBlob(blob => {
-        const archivo = new File([blob], 'mi-carta.png', { type: 'image/png' });
-        navigator.share({
-          files: [archivo],
-          title: 'Mi carta del día',
-          text: 'Compartí tu carta del tarot ✨'
-        }).catch(err => console.error("Error al compartir:", err));
+          // Si el navegador soporta compartir archivos (móviles)
+          if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
+            navigator.share({
+              title: 'Mi carta del día',
+              text: '¡Mirá mi carta de tarot! ✨',
+              files: [archivo]
+            })
+            .catch(err => {
+              // Si el usuario canceló el diálogo, simplemente no descargamos
+              if (err.name !== 'AbortError') {
+                console.error("Error al compartir:", err);
+                alert("No se pudo compartir tu carta.");
+              }
+            });
+          } else {
+            // Si no se puede compartir (desktop, etc.), lo descargamos
+            const enlace = document.createElement('a');
+            enlace.href = URL.createObjectURL(blob);
+            enlace.download = "mi-carta.png";
+            enlace.click();
+          }
+        });
       });
-    } else {
-      // Alternativa: mostrar la imagen para descargar manualmente
-      const link = document.createElement('a');
-      link.href = imagen;
-      link.download = 'mi-carta.png';
-      link.click();
     }
-  });
-}
-</script>
+
+    // Mostrar carta al recargar si ya la sacó hoy
+    window.addEventListener('DOMContentLoaded', () => {
+      // ... tu código de mostrar carta guardada ...
+    });
+  </script>
   
 </body>
 </html>
