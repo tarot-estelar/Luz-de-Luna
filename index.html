@@ -100,13 +100,12 @@ div class="card" style="margin-top: 20px; padding: 20px; background-color: #2e2c
   <input type="date" id="fechaNacimiento" style="margin: 10px; padding: 5px; border-radius: 6px;"><br>
 
   <label for="preguntaUsuario">💭 Escribí tu pregunta o intención:</label><br>
-  <input type="text" id="preguntaUsuario" placeholder="¿Qué necesito saber hoy?" style="margin: 10px; padding: 5px; width: 80%; border-radius: 6px;"><br>
+  <input type="text" id="preguntaUsuario" placeholder="¿Qué necesito saber hoy?" style="margin: 10px; padding: 5px; width: 50%; border-radius: 6px;"><br>
 
-  <button class="btn" onclick="iniciarLectura()">Tirar la Carta</button>
+  <button class="btn" onclick="iniciarLectura()">Tu Carta</button>
 </div>
 
 <div id="mensajeBarajar" style="display:none; font-size: 1.2rem; margin-top: 20px;">🔮 Conectando con tu energía...</div>
-  <button class="btn" onclick="tirarCarta()">Tu Carta</button>
 
  <div id="resultado" class="card" style="display: none;">
     <h2 id="nombreCarta"></h2>
@@ -341,15 +340,61 @@ function iniciarLectura() {
   }, 3000); // 3 segundos
 }
   function tirarCarta() {
-    const today = new Date().toISOString().split('T')[0];
-    const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
+   const fecha = new Date(document.getElementById("fechaNacimiento").value);
+const signo = calcularSignoZodiacal(fecha);
+const fase = calcularFaseLunar(fecha);
 
+const cartaExtra = document.createElement("p");
+cartaExtra.innerHTML = `<strong>♓ Tu signo:</strong> ${signo} • <strong>🌙 Fase lunar:</strong> ${fase}`;
+document.getElementById("resultado").appendChild(cartaExtra);
     if (savedData && savedData.fecha === today) {
       alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
       mostrarCarta(savedData.carta);
       return;
     }
+function calcularSignoZodiacal(fecha) {
+  const dia = fecha.getDate();
+  const mes = fecha.getMonth() + 1;
 
+  const signos = [
+    { signo: "Capricornio", desde: "12-22", hasta: "01-19" },
+    { signo: "Acuario", desde: "01-20", hasta: "02-18" },
+    { signo: "Piscis", desde: "02-19", hasta: "03-20" },
+    { signo: "Aries", desde: "03-21", hasta: "04-19" },
+    { signo: "Tauro", desde: "04-20", hasta: "05-20" },
+    { signo: "Géminis", desde: "05-21", hasta: "06-20" },
+    { signo: "Cáncer", desde: "06-21", hasta: "07-22" },
+    { signo: "Leo", desde: "07-23", hasta: "08-22" },
+    { signo: "Virgo", desde: "08-23", hasta: "09-22" },
+    { signo: "Libra", desde: "09-23", hasta: "10-22" },
+    { signo: "Escorpio", desde: "10-23", hasta: "11-21" },
+    { signo: "Sagitario", desde: "11-22", hasta: "12-21" }
+  ];
+
+  for (const s of signos) {
+    const desde = new Date(`2020-${s.desde}`);
+    const hasta = new Date(`2020-${s.hasta}`);
+    const f = new Date(`2020-${mes.toString().padStart(2, "0")}-${dia.toString().padStart(2, "0")}`);
+    if ((f >= desde && f <= hasta) || (s.signo === "Capricornio" && (mes === 12 || mes === 1))) {
+      return s.signo;
+    }
+  }
+  return "Desconocido";
+}
+
+function calcularFaseLunar(fecha) {
+  const lp = 2551443; // duración promedio de un ciclo lunar en segundos
+  const now = new Date();
+  const new_moon = new Date(1970, 0, 7, 20, 35, 0); // referencia de luna nueva
+  const phase = ((now.getTime() - new_moon.getTime()) / 1000) % lp;
+  const days = Math.floor(phase / (24 * 3600));
+
+  if (days < 1) return "🌑 Luna Nueva";
+  if (days < 7) return "🌓 Cuarto Creciente";
+  if (days < 15) return "🌕 Luna Llena";
+  if (days < 22) return "🌗 Cuarto Menguante";
+  return "🌘 Luna Vieja";
+}
     const carta = cartas[Math.floor(Math.random() * cartas.length)];
     localStorage.setItem('cartaDelDia', JSON.stringify({ fecha: today, carta }));
     mostrarCarta(carta);
