@@ -340,48 +340,13 @@ function iniciarLectura() {
   document.getElementById("faseLunar").textContent = obtenerFaseLunar(fecha);
 
 
-  setTimeout(() => {
-    document.getElementById("mensajeBarajar").style.display = "none";
-    tirarCarta();
-  }, 3000); // 3 segundos
-}
-
+  
   document.getElementById("mensajeBarajar").style.display = "block";
-
   setTimeout(() => {
     document.getElementById("mensajeBarajar").style.display = "none";
     tirarCarta();
-  }, 3000); // 3 segundos
-}
-  function tirarCarta() {
-    const today = new Date().toISOString().split('T')[0];
-    const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
-
-    if (savedData && savedData.fecha === today) {
-      alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
-      mostrarCarta(savedData.carta);
-      return;
-    }
-
-    const carta = cartas[Math.floor(Math.random() * cartas.length)];
-    localStorage.setItem('cartaDelDia', JSON.stringify({ fecha: today, carta }));
-    mostrarCarta(carta);
-  }
-
-  function compartirCarta() {
-    const carta = document.getElementById("nombreCarta").textContent;
-    const resumen = document.getElementById("resumenCarta").textContent;
-    const palabras = document.getElementById("palabrasClaveCarta").textContent;
-    const consejo = document.getElementById("consejoCarta").textContent;
-    const mensaje = `Mi carta del día es ${carta}: 🌟 ${resumen}\n🔑 ${palabras}\n🧭 ${consejo}`;
-
-    if (navigator.share) {
-      navigator.share({
-        title: 'Mi carta del día',
-        text: mensaje,
-        url: window.location.href
-      });
-    } else {
+  }, 3000);
+} else {
       alert("Compartí este mensaje:\n" + mensaje);
     }
   }
