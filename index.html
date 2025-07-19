@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <!-- Google tag (gtag.js) -->
@@ -93,17 +94,19 @@
 <body>
 
   <h1>Tu carta de Tarot</h1>
-<p>Conecta con tu energía hoy.✨</p>
+  <p>Conecta con tu energía hoy.✨</p>
+div class="card" style="margin-top: 20px; padding: 20px; background-color: #2e2c47; border-radius: 12px;">
+  <label for="fechaNacimiento">📅 Ingresá tu fecha de nacimiento:</label><br>
+  <input type="date" id="fechaNacimiento" style="margin: 10px; padding: 5px; border-radius: 6px;"><br>
 
-<div class="form-container">
-  <label>Fecha de nacimiento:</label><br>
-  <input type="date" id="fecha"><br>
-  <label>Tu pregunta o intención:</label><br>
-  <input type="text" id="pregunta" placeholder="¿Qué necesito saber hoy?"><br>
-  <button class="btn" onclick="tirarConIntencion()">Tirar carta</button>
+  <label for="preguntaUsuario">💭 Escribí tu pregunta o intención:</label><br>
+  <input type="text" id="preguntaUsuario" placeholder="¿Qué necesito saber hoy?" style="margin: 10px; padding: 5px; width: 80%; border-radius: 6px;"><br>
+
+  <button class="btn" onclick="iniciarLectura()">Tirar la Carta</button>
 </div>
 
-<div id="mensaje" style="display:none; font-style:italic; margin-top:20px;"></div>
+<div id="mensajeBarajar" style="display:none; font-size: 1.2rem; margin-top: 20px;">🔮 Conectando con tu energía...</div>
+  <button class="btn" onclick="tirarCarta()">Tu Carta</button>
 
  <div id="resultado" class="card" style="display: none;">
     <h2 id="nombreCarta"></h2>
@@ -321,67 +324,30 @@
     document.getElementById("resultado").style.display = "block";
     document.getElementById("botonCompartir").style.display = "inline-block";
   }
+function iniciarLectura() {
+  const fecha = document.getElementById("fechaNacimiento").value;
+  const pregunta = document.getElementById("preguntaUsuario").value;
 
- function signoZodiacal(d) {
-    const m = d.getMonth()+1, day = d.getDate();
-    const zodiacs = [
-      {sign:"Capricornio", end:19},{sign:"Acuario", end:18},{sign:"Piscis", end:20},
-      {sign:"Aries", end:19},{sign:"Tauro", end:20},{sign:"Géminis", end:20},
-      {sign:"Cáncer", end:22},{sign:"Leo", end:22},{sign:"Virgo", end:22},
-      {sign:"Libra", end:22},{sign:"Escorpio", end:22},{sign:"Sagitario", end:21}
-    ];
-    return (day > zodiacs[m-1].end) ? zodiacs[m % 12].sign : zodiacs[m-1].sign;
+  if (!fecha || !pregunta) {
+    alert("Por favor completá tu fecha de nacimiento y tu pregunta.");
+    return;
   }
 
-  function faseLunar(day, month, year) {
-    const c = new Date(year, month, day).getTime() / 1000;
-    const moonAge = (c / 86400) % 29.53;
-    if (moonAge < 1.845) return "Luna Nueva";
-    if (moonAge < 9.225) return "Cuarto Creciente";
-    if (moonAge < 14.765) return "Luna Llena";
-    if (moonAge < 22.305) return "Cuarto Menguante";
-    return "Luna Vieja";
-  }
+  document.getElementById("mensajeBarajar").style.display = "block";
 
-  function tirarConIntencion() {
-    const f = document.getElementById('fecha').value;
-    const q = document.getElementById('pregunta').value;
-    if (!f) return alert("Por favor, ingresá tu fecha de nacimiento.");
+  setTimeout(() => {
+    document.getElementById("mensajeBarajar").style.display = "none";
+    tirarCarta();
+  }, 3000); // 3 segundos
+}
+  function tirarCarta() {
+    const today = new Date().toISOString().split('T')[0];
+    const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
 
-    document.getElementById('mensaje').style.display = "block";
-    document.getElementById('mensaje').innerText = "Conectando con tu energía...";
-    document.getElementById('resultado').style.display = "none";
-
-    setTimeout(() => {
-      // Llamo a tu función original, pero con parámetros
-      tirarCarta(f, q);
-      document.getElementById('mensaje').style.display = "none";
-    }, 3000);
-  }
-
-  // Adaptá tu función existente para recibir parámetros
-  function tirarCarta(fechaStr, intencion = "") {
-    const fecha = new Date(fechaStr);
-    const carta = cartas[Math.floor(Math.random() * cartas.length)];
-    document.getElementById("nombreCarta").textContent = carta.nombre;
-    document.getElementById("imagenCarta").src = carta.imagen;
-    document.getElementById("resumenCarta").textContent = carta.resumen;
-    document.getElementById("palabrasClaveCarta").textContent = carta.palabrasClave;
-    document.getElementById("consejoCarta").textContent = carta.consejo;
-    document.getElementById("resultado").style.display = "block";
-    document.getElementById("botonCompartir").style.display = "inline-block";
-
-    // Agregamos signo y fase bajo la carta
-    const signo = signoZodiacal(fecha);
-    const fase = faseLunar(fecha.getDate(), fecha.getMonth(), fecha.getFullYear());
-    document.getElementById("mensajeCartaExtra").remove?.(); // si existiera limpia
-    const extra = document.createElement("p");
-    extra.id = "mensajeCartaExtra";
-    extra.innerHTML = `<strong>Signo zodiacal:</strong> ${signo} • <strong>Fase lunar:</strong> ${fase}` + (intencion ? `<br><em>Tu intención:</em> «${intencion}»` : "");
-    document.getElementById("resultado").appendChild(extra);
-
-    // Guardar carta diaria si ya lo hacías...
-  
+    if (savedData && savedData.fecha === today) {
+      alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
+      mostrarCarta(savedData.carta);
+      return;
     }
 
     const carta = cartas[Math.floor(Math.random() * cartas.length)];
