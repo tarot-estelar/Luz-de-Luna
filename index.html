@@ -22,7 +22,7 @@
       background-color: #1c1b2f;
       color: #f0e6ff;
       text-align: center;
-      padding: 35px;
+      padding: 40px;
     }
 
     h1 {
@@ -97,62 +97,497 @@
       border-radius: 8px;
       border-left: 4px solid #dabfff;
     }
+
+    /* Navegación entre secciones */
+    .navegacion-secciones {
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .btn-seccion {
+      background-color: #7b1fa2;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .btn-seccion:hover {
+      background-color: #9c27b0;
+    }
+
+    .btn-seccion.activo {
+      background-color: #9c27b0;
+      box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+    }
+
+    /* Estilos para secciones ocultas */
+    .seccion-oculta {
+      display: none;
+      margin-top: 40px;
+    }
+
+    /* Estilos para Carta Natal */
+    .formulario-carta-natal {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .campo-entrada {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .campo-entrada label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #dabfff;
+    }
+
+    .campo-entrada input, .campo-entrada select, .campo-entrada textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .campo-entrada textarea {
+      resize: vertical;
+    }
+
+    .seccion-carta {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid #dabfff;
+    }
+
+    .seccion-carta h4 {
+      margin-top: 0;
+      color: #dabfff;
+      font-size: 1.2rem;
+    }
+
+    .signos-principales p {
+      margin: 8px 0;
+      font-size: 1.1rem;
+    }
+
+    .tabla-planetas, .tabla-casas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .planeta-item, .casa-item {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    /* Estilos para Lectura Personalizada */
+    .formulario-lectura {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .descripcion-tirada {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      border-radius: 6px;
+      margin: 10px 0;
+      font-style: italic;
+      color: #dabfff;
+    }
+
+    .info-tirada {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 4px solid #dabfff;
+    }
+
+    .cartas-tirada {
+      display: grid;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .carta-posicion {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .carta-posicion h4 {
+      color: #dabfff;
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .carta-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 10px 0;
+    }
+
+    .carta-info img {
+      width: 80px;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .carta-detalles h5 {
+      margin: 0 0 5px 0;
+      color: #f0e6ff;
+    }
+
+    .carta-detalles p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .interpretacion-posicional {
+      background-color: rgba(156, 39, 176, 0.1);
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .resumen-lectura {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid #9c27b0;
+    }
+
+    .resumen-lectura h4 {
+      color: #dabfff;
+      margin-top: 0;
+    }
+
+    .acciones-lectura {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .btn-secundario {
+      background-color: #7b1fa2;
+      margin-left: 10px;
+    }
+
+    .btn-pequeno {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+
+    .lectura-rapida, .historial-lecturas {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .lectura-rapida h3, .historial-lecturas h3 {
+      color: #dabfff;
+      margin-top: 0;
+    }
+
+    .resultado-rapido {
+      margin-top: 15px;
+    }
+
+    .carta-rapida {
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+
+    .carta-rapida img {
+      width: 120px;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .carta-rapida h4 {
+      color: #dabfff;
+      margin: 10px 0;
+    }
+
+    .lista-historial {
+      margin-top: 15px;
+    }
+
+    .item-historial {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      border-radius: 6px;
+      margin: 10px 0;
+      border-left: 3px solid #9c27b0;
+    }
+
+    .item-historial h5 {
+      margin: 0 0 5px 0;
+      color: #dabfff;
+    }
+
+    .item-historial p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive design */
+    @media (min-width: 768px) {
+      .cartas-tirada {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      
+      .carta-info {
+        flex-direction: row;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .carta-info {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .carta-info img {
+        width: 100px;
+      }
+
+      .btn-seccion {
+        display: block;
+        margin: 5px auto;
+        width: 80%;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>Tu carta de Tarot</h1>
+  <h1>Luz de Luna - Tarot</h1>
   <p>Conecta con tu energía hoy.✨</p>
- 
-  <label for="fechaNacimiento"> Ingresá tu fecha de nacimiento:</label><br>
-  <input type="date" id="fechaNacimiento" style="margin: 10px; padding: 5px; border-radius: 6px;"><br>
 
-  <label for="preguntaUsuario"> Escribí tu pregunta o intención:</label><br>
-  <input type="text" id="preguntaUsuario" placeholder="¿Qué necesito saber hoy?" style="margin: 10px; padding: 5px; width: 30%; border-radius: 6px;"><br>
+  <!-- Navegación entre secciones -->
+  <div class="navegacion-secciones">
+    <button class="btn-seccion activo" onclick="mostrarSeccionPrincipal()">🔮 Carta del Día</button>
+    <button class="btn-seccion" onclick="mostrarSeccion('seccionCartaNatal')">🌟 Carta Natal</button>
+    <button class="btn-seccion" onclick="mostrarSeccion('seccionLecturaPersonalizada')">🃏 Lectura Personalizada</button>
+  </div>
 
-  <button class="btn" onclick="iniciarLectura()">Tu Carta</button>
+  <!-- Sección Principal (Carta del Día) -->
+  <div id="seccionPrincipal">
+    <label for="fechaNacimiento"> Ingresá tu fecha de nacimiento:</label><br>
+    <input type="date" id="fechaNacimiento" style="margin: 10px; padding: 5px; border-radius: 6px;"><br>
 
-  <div id="mensajeBarajar" style="display:none; font-size: 1.2rem; margin-top: 20px;">🔮 Conectando con tu energía...</div>
+    <label for="preguntaUsuario"> Escribí tu pregunta o intención:</label><br>
+    <input type="text" id="preguntaUsuario" placeholder="¿Qué necesito saber hoy?" style="margin: 10px; padding: 5px; width: 30%; border-radius: 6px;"><br>
 
-  <div id="resultado" class="card" style="display: none;">
-    <h2 id="nombreCarta"></h2>
-    <!-- Agregamos crossorigin para html2canvas -->
-    <img id="imagenCarta" crossorigin="anonymous" src="" alt="Carta de Tarot" />
+    <button class="btn" onclick="iniciarLectura()">Tu Carta</button>
 
-    <div id="marcaSitio" style="
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 10px 20px;
-      margin-top: 8px;
-      border-radius: 8px;
-      font-weight: bold;
-      color: #dabfff;
-      font-size: 1.1rem;
-      width: 90%;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    ">
-      Luz de Luna – Tarot 🔮
+    <div id="mensajeBarajar" style="display:none; font-size: 1.2rem; margin-top: 20px;">🔮 Conectando con tu energía...</div>
+
+    <div id="resultado" class="card" style="display: none;">
+      <h2 id="nombreCarta"></h2>
+      <img id="imagenCarta" crossorigin="anonymous" src="" alt="Carta de Tarot" />
+
+      <div id="marcaSitio" style="
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 10px 20px;
+        margin-top: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        color: #dabfff;
+        font-size: 1.1rem;
+        width: 90%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      ">
+        Luz de Luna – Tarot 🔮
+      </div>
+     
+      <p><strong>🌟Mensaje:</strong> <span id="resumenCarta"></span></p>
+      <p><strong>🔑Palabras clave:</strong> <span id="palabrasClaveCarta"></span></p>
+      <p><strong>🧭Consejo:</strong> <span id="consejoCarta"></span></p>
+      
+      <div class="signo-info">
+        <p><strong>✨ Signo zodiacal:</strong> <span id="signoZodiaco"></span></p>
+        <p><strong>🌙 Fase lunar:</strong> <span id="faseLunar"></span></p>
+      </div>
+      
+      <button class="btn" onclick="generarImagen()" id="botonCompartir" style="display: none;">
+        Compartir tu carta
+      </button>
     </div>
-   
-    <p><strong>🌟Mensaje:</strong> <span id="resumenCarta"></span></p>
-    <p><strong>🔑Palabras clave:</strong> <span id="palabrasClaveCarta"></span></p>
-    <p><strong>🧭Consejo:</strong> <span id="consejoCarta"></span></p>
+  </div>
+
+  <!-- Sección de Carta Natal -->
+  <div id="seccionCartaNatal" class="seccion-oculta">
+    <h2>🌟 Tu Carta Natal</h2>
+    <p>Descubre las posiciones planetarias al momento de tu nacimiento</p>
     
-    <!-- Información del signo zodiacal y fase lunar -->
-    <div class="signo-info">
-      <p><strong>✨ Signo zodiacal:</strong> <span id="signoZodiaco"></span></p>
-      <p><strong>🌙 Fase lunar hoy:</strong> <span id="faseLunar"></span></p>
+    <div class="formulario-carta-natal">
+      <div class="campo-entrada">
+        <label for="fechaNacimientoNatal">Fecha de nacimiento:</label>
+        <input type="date" id="fechaNacimientoNatal" required>
+      </div>
+      
+      <div class="campo-entrada">
+        <label for="horaNacimiento">Hora de nacimiento (opcional):</label>
+        <input type="time" id="horaNacimiento" placeholder="12:00">
+      </div>
+      
+      <div class="campo-entrada">
+        <label for="lugarNacimiento">Lugar de nacimiento:</label>
+        <input type="text" id="lugarNacimiento" placeholder="Buenos Aires, Argentina">
+      </div>
+      
+      <button class="btn" onclick="calcularCartaNatal()">Calcular Carta Natal</button>
+    </div>
+
+    <div id="resultadoCartaNatal" class="card" style="display: none;">
+      <h3 id="tituloCartaNatal">Tu Carta Natal</h3>
+      
+      <div class="seccion-carta">
+        <h4>📅 Datos de Nacimiento</h4>
+        <p id="datosPersonales"></p>
+      </div>
+      
+      <div class="seccion-carta">
+        <h4>⭐ Signos Principales</h4>
+        <div class="signos-principales">
+          <p><strong>☀️ Sol:</strong> <span id="signoSolar"></span></p>
+          <p><strong>🌅 Ascendente:</strong> <span id="ascendente"></span></p>
+        </div>
+      </div>
+      
+      <div class="seccion-carta">
+        <h4>🪐 Posiciones Planetarias</h4>
+        <div id="posicionesPlanetarias" class="tabla-planetas"></div>
+      </div>
+      
+      <div class="seccion-carta">
+        <h4>🏠 Casas Astrológicas</h4>
+        <div id="casasAstrologicas" class="tabla-casas"></div>
+      </div>
+      
+      <div class="seccion-carta">
+        <h4>🔮 Interpretación</h4>
+        <div id="interpretacionNatal">
+          <p id="interpretacionSol"></p>
+          <p id="interpretacionAscendente"></p>
+          <p id="resumenGeneral"></p>
+        </div>
+      </div>
+      
+      <button class="btn" onclick="compartirCartaNatal()" id="botonCompartirNatal">
+        Compartir Carta Natal
+      </button>
+    </div>
+  </div>
+
+  <!-- Sección de Lectura Personalizada -->
+  <div id="seccionLecturaPersonalizada" class="seccion-oculta">
+    <h2>🔮 Lectura de Tarot Personalizada</h2>
+    <p>Incluye Arcanos Mayores y Menores para una lectura completa</p>
+    
+    <div class="formulario-lectura">
+      <div class="campo-entrada">
+        <label for="tipoTiradaPersonalizada">Tipo de Tirada:</label>
+        <select id="tipoTiradaPersonalizada" onchange="mostrarDescripcionTirada()">
+          <option value="tres_cartas">Tirada de 3 Cartas (Pasado-Presente-Futuro)</option>
+          <option value="cruz_celta">Cruz Celta Simplificada (6 cartas)</option>
+          <option value="amor">Tirada del Amor (4 cartas)</option>
+          <option value="decision">Tirada de Decisión (5 cartas)</option>
+        </select>
+      </div>
+      
+      <div id="descripcionTirada" class="descripcion-tirada">
+        <p><strong>Tirada de 3 Cartas:</strong> Pasado - Presente - Futuro</p>
+      </div>
+      
+      <div class="campo-entrada">
+        <label for="preguntaPersonalizada">Tu pregunta o intención:</label>
+        <textarea id="preguntaPersonalizada" placeholder="¿Qué necesitas saber? Sé específico en tu pregunta..." rows="3"></textarea>
+      </div>
+      
+      <button class="btn" onclick="realizarLecturaPersonalizada()">Realizar Lectura</button>
+    </div>
+
+    <div id="resultadoLecturaPersonalizada" class="card" style="display: none;">
+      <h3 id="tituloLecturaPersonalizada">Tu Lectura Personalizada</h3>
+      
+      <div class="info-tirada">
+        <p><strong>🎯 Tipo de Tirada:</strong> <span id="infoTipoTirada"></span></p>
+        <p><strong>❓ Tu Pregunta:</strong> <span id="infoPregunta"></span></p>
+        <p><strong>📅 Fecha:</strong> <span id="infoFecha"></span></p>
+      </div>
+      
+      <div id="cartasTirada" class="cartas-tirada"></div>
+      
+      <div class="resumen-lectura">
+        <h4>🌟 Resumen General</h4>
+        <p id="resumenGeneralLectura"></p>
+      </div>
+      
+      <div class="acciones-lectura">
+        <button class="btn" onclick="compartirLecturaPersonalizada()">Compartir Lectura</button>
+        <button class="btn btn-secundario" onclick="guardarLectura()">Guardar Lectura</button>
+      </div>
     </div>
     
-    <button class="btn" onclick="generarImagen()" id="botonCompartir" style="display: none;">
-      Compartir tu carta
-    </button>
+    <div class="lectura-rapida">
+      <h3>⚡ Lectura Rápida (1 Carta)</h3>
+      <p>Para preguntas rápidas o inspiración del momento</p>
+      
+      <div class="campo-entrada">
+        <input type="text" id="preguntaRapida" placeholder="Tu pregunta rápida...">
+      </div>
+      
+      <button class="btn btn-pequeno" onclick="realizarLecturaRapida()">Carta del Momento</button>
+      
+      <div id="resultadoLecturaRapida" class="resultado-rapido" style="display: none;">
+        <div class="carta-rapida">
+          <img id="imagenCartaRapida" src="" alt="Carta del momento">
+          <h4 id="nombreCartaRapida"></h4>
+          <p id="interpretacionRapida"></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="historial-lecturas">
+      <h3>📚 Tus Últimas Lecturas</h3>
+      <button class="btn btn-pequeno" onclick="mostrarHistorial()">Ver Historial</button>
+      <div id="listaHistorial" class="lista-historial" style="display: none;"></div>
+    </div>
   </div>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1330671703784338"
      crossorigin="anonymous"></script>
-  <!-- Banner inferior -->
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-1330671703784338"
@@ -170,6 +605,7 @@
   </footer>
 
   <script>
+    // Arcanos Mayores (código original)
     const cartas = [
       {
         nombre: "El Loco",
@@ -327,13 +763,420 @@
       }
     ];
 
+    // Arcanos Menores Completos
+    const arcanosMenoresCompletos = {
+      espadas: [
+        {
+          nombre: "As de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/as_espadas.jpg",
+          significado: "Nuevas ideas, claridad mental, verdad revelada.",
+          palabrasClave: "Claridad – Verdad – Nuevos pensamientos",
+          consejo: "Confiá en tu mente clara para tomar decisiones."
+        },
+        {
+          nombre: "Dos de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/dos_espadas.jpg",
+          significado: "Decisiones difíciles, estancamiento, equilibrio precario.",
+          palabrasClave: "Indecisión – Equilibrio – Paciencia",
+          consejo: "Tomate tiempo para evaluar todas las opciones."
+        },
+        {
+          nombre: "Tres de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/tres_espadas.jpg",
+          significado: "Dolor emocional, separación, pérdida.",
+          palabrasClave: "Dolor – Separación – Sanación",
+          consejo: "Permitite sentir el dolor para poder sanar."
+        },
+        {
+          nombre: "Cuatro de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/cuatro_espadas.jpg",
+          significado: "Descanso, meditación, pausa necesaria.",
+          palabrasClave: "Descanso – Meditación – Recuperación",
+          consejo: "Es momento de hacer una pausa y recuperar energías."
+        },
+        {
+          nombre: "Cinco de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/cinco_espadas.jpg",
+          significado: "Conflicto, derrota, tensión.",
+          palabrasClave: "Conflicto – Derrota – Lecciones",
+          consejo: "Aprendé de los conflictos y seguí adelante."
+        },
+        {
+          nombre: "Seis de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/seis_espadas.jpg",
+          significado: "Transición, viaje hacia aguas más calmas.",
+          palabrasClave: "Transición – Viaje – Calma",
+          consejo: "Dejá atrás lo que ya no te sirve."
+        },
+        {
+          nombre: "Siete de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/siete_espadas.jpg",
+          significado: "Engaño, estrategia, actuar en secreto.",
+          palabrasClave: "Estrategia – Secreto – Cautela",
+          consejo: "Sé estratégico pero mantené la honestidad."
+        },
+        {
+          nombre: "Ocho de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/ocho_espadas.jpg",
+          significado: "Limitaciones mentales, sentirse atrapado.",
+          palabrasClave: "Limitaciones – Atrapado – Liberación",
+          consejo: "Las limitaciones están más en tu mente que en la realidad."
+        },
+        {
+          nombre: "Nueve de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/nueve_espadas.jpg",
+          significado: "Ansiedad, pesadillas, preocupación excesiva.",
+          palabrasClave: "Ansiedad – Preocupación – Calma",
+          consejo: "No dejes que los miedos controlen tu vida."
+        },
+        {
+          nombre: "Diez de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/diez_espadas.jpg",
+          significado: "Final doloroso, traición, nuevo amanecer.",
+          palabrasClave: "Final – Traición – Renovación",
+          consejo: "Después de la tormenta siempre sale el sol."
+        },
+        {
+          nombre: "Sota de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/sota_espadas.jpg",
+          significado: "Curiosidad intelectual, vigilancia, comunicación directa.",
+          palabrasClave: "Curiosidad – Vigilancia – Comunicación",
+          consejo: "Mantené la mente abierta y comunicá con claridad."
+        },
+        {
+          nombre: "Caballero de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/caballero_espadas.jpg",
+          significado: "Acción rápida, impulsividad, determinación.",
+          palabrasClave: "Rapidez – Impulsividad – Determinación",
+          consejo: "Actuá con determinación pero pensá antes de moverte."
+        },
+        {
+          nombre: "Reina de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/reina_espadas.jpg",
+          significado: "Independencia, claridad mental, honestidad directa.",
+          palabrasClave: "Independencia – Claridad – Honestidad",
+          consejo: "Confiá en tu sabiduría y sé honesta contigo misma."
+        },
+        {
+          nombre: "Rey de Espadas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/rey_espadas.jpg",
+          significado: "Autoridad intelectual, justicia, liderazgo mental.",
+          palabrasClave: "Autoridad – Justicia – Liderazgo",
+          consejo: "Liderá con sabiduría y justicia."
+        }
+      ],
+      
+      copas: [
+        {
+          nombre: "As de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/as_copas.jpg",
+          significado: "Nuevas emociones, amor, intuición, espiritualidad.",
+          palabrasClave: "Amor – Intuición – Nuevos sentimientos",
+          consejo: "Abrí tu corazón a nuevas experiencias emocionales."
+        },
+        {
+          nombre: "Dos de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/dos_copas.jpg",
+          significado: "Unión, conexión, sociedad, amor mutuo.",
+          palabrasClave: "Unión – Conexión – Amor mutuo",
+          consejo: "Cultivá las relaciones que te nutren."
+        },
+        {
+          nombre: "Tres de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/tres_copas.jpg",
+          significado: "Celebración, amistad, comunidad, alegría compartida.",
+          palabrasClave: "Celebración – Amistad – Alegría",
+          consejo: "Celebrá los logros con quienes querés."
+        },
+        {
+          nombre: "Cuatro de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/cuatro_copas.jpg",
+          significado: "Apatía, contemplación, oportunidades perdidas.",
+          palabrasClave: "Apatía – Contemplación – Oportunidades",
+          consejo: "No dejes pasar las oportunidades por estar distraído."
+        },
+        {
+          nombre: "Cinco de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/cinco_copas.jpg",
+          significado: "Pérdida, duelo, decepción, esperanza renovada.",
+          palabrasClave: "Pérdida – Duelo – Esperanza",
+          consejo: "Enfocate en lo que aún tenés, no en lo que perdiste."
+        },
+        {
+          nombre: "Seis de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/seis_copas.jpg",
+          significado: "Nostalgia, recuerdos, inocencia, generosidad.",
+          palabrasClave: "Nostalgia – Recuerdos – Generosidad",
+          consejo: "Honrá el pasado pero vivé en el presente."
+        },
+        {
+          nombre: "Siete de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/siete_copas.jpg",
+          significado: "Ilusiones, opciones múltiples, fantasías, decisiones.",
+          palabrasClave: "Ilusiones – Opciones – Fantasías",
+          consejo: "Distinguí entre sueños realistas e ilusiones."
+        },
+        {
+          nombre: "Ocho de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/ocho_copas.jpg",
+          significado: "Abandono, búsqueda espiritual, dejar atrás.",
+          palabrasClave: "Abandono – Búsqueda – Crecimiento",
+          consejo: "A veces hay que dejar ir para crecer."
+        },
+        {
+          nombre: "Nueve de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/nueve_copas.jpg",
+          significado: "Satisfacción, deseos cumplidos, contentamiento.",
+          palabrasClave: "Satisfacción – Deseos cumplidos – Contentamiento",
+          consejo: "Disfrutá de los logros alcanzados."
+        },
+        {
+          nombre: "Diez de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/diez_copas.jpg",
+          significado: "Felicidad familiar, armonía emocional, plenitud.",
+          palabrasClave: "Felicidad – Armonía – Plenitud",
+          consejo: "Valorá la armonía en tus relaciones."
+        },
+        {
+          nombre: "Sota de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/sota_copas.jpg",
+          significado: "Sensibilidad, intuición, mensajes emocionales.",
+          palabrasClave: "Sensibilidad – Intuición – Mensajes",
+          consejo: "Escuchá tu intuición y sé receptivo a los mensajes."
+        },
+        {
+          nombre: "Caballero de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/caballero_copas.jpg",
+          significado: "Romance, idealismo, seguir el corazón.",
+          palabrasClave: "Romance – Idealismo – Corazón",
+          consejo: "Seguí tu corazón pero mantené los pies en la tierra."
+        },
+        {
+          nombre: "Reina de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/reina_copas.jpg",
+          significado: "Compasión, intuición, cuidado emocional.",
+          palabrasClave: "Compasión – Intuición – Cuidado",
+          consejo: "Cuidá de otros pero no te olvides de vos misma."
+        },
+        {
+          nombre: "Rey de Copas",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/rey_copas.jpg",
+          significado: "Equilibrio emocional, compasión, sabiduría del corazón.",
+          palabrasClave: "Equilibrio – Compasión – Sabiduría",
+          consejo: "Liderá con el corazón pero mantené el equilibrio."
+        }
+      ],
+      
+      bastos: [
+        {
+          nombre: "As de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/as_bastos.jpg",
+          significado: "Nueva energía, inspiración, creatividad, potencial.",
+          palabrasClave: "Energía – Inspiración – Creatividad",
+          consejo: "Aprovechá esta nueva energía creativa."
+        },
+        {
+          nombre: "Dos de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/dos_bastos.jpg",
+          significado: "Planificación, futuro, opciones, visión personal.",
+          palabrasClave: "Planificación – Futuro – Visión",
+          consejo: "Planificá tu futuro con visión clara."
+        },
+        {
+          nombre: "Tres de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/tres_bastos.jpg",
+          significado: "Expansión, previsión, comercio, exploración.",
+          palabrasClave: "Expansión – Previsión – Exploración",
+          consejo: "Expandí tus horizontes y explorá nuevas oportunidades."
+        },
+        {
+          nombre: "Cuatro de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/cuatro_bastos.jpg",
+          significado: "Celebración, estabilidad, hogar, logros.",
+          palabrasClave: "Celebración – Estabilidad – Hogar",
+          consejo: "Celebrá los logros y disfrutá la estabilidad."
+        },
+        {
+          nombre: "Cinco de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/cinco_bastos.jpg",
+          significado: "Competencia, conflicto, desafío, lucha.",
+          palabrasClave: "Competencia – Conflicto – Desafío",
+          consejo: "Enfrentá los desafíos con determinación."
+        },
+        {
+          nombre: "Seis de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/seis_bastos.jpg",
+          significado: "Victoria, reconocimiento, éxito público.",
+          palabrasClave: "Victoria – Reconocimiento – Éxito",
+          consejo: "Disfrutá del reconocimiento merecido."
+        },
+        {
+          nombre: "Siete de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/siete_bastos.jpg",
+          significado: "Defensa, perseverancia, mantener la posición.",
+          palabrasClave: "Defensa – Perseverancia – Posición",
+          consejo: "Defendé tus logros con perseverancia."
+        },
+        {
+          nombre: "Ocho de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/ocho_bastos.jpg",
+          significado: "Velocidad, movimiento rápido, comunicación.",
+          palabrasClave: "Velocidad – Movimiento – Comunicación",
+          consejo: "Las cosas se moverán rápidamente, mantente alerta."
+        },
+        {
+          nombre: "Nueve de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/nueve_bastos.jpg",
+          significado: "Resistencia, persistencia, último esfuerzo.",
+          palabrasClave: "Resistencia – Persistencia – Esfuerzo",
+          consejo: "Resistí un poco más, estás cerca del final."
+        },
+        {
+          nombre: "Diez de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/diez_bastos.jpg",
+          significado: "Carga pesada, responsabilidad, agotamiento.",
+          palabrasClave: "Carga – Responsabilidad – Agotamiento",
+          consejo: "Delegá responsabilidades, no cargues todo solo."
+        },
+        {
+          nombre: "Sota de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/sota_bastos.jpg",
+          significado: "Entusiasmo, exploración, aventura, noticias.",
+          palabrasClave: "Entusiasmo – Exploración – Aventura",
+          consejo: "Mantené el entusiasmo y explorá nuevas aventuras."
+        },
+        {
+          nombre: "Caballero de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/caballero_bastos.jpg",
+          significado: "Impulsividad, aventura, pasión, acción rápida.",
+          palabrasClave: "Impulsividad – Aventura – Pasión",
+          consejo: "Canalizá tu pasión de manera constructiva."
+        },
+        {
+          nombre: "Reina de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/reina_bastos.jpg",
+          significado: "Confianza, determinación, calidez, liderazgo.",
+          palabrasClave: "Confianza – Determinación – Calidez",
+          consejo: "Liderá con confianza y calidez."
+        },
+        {
+          nombre: "Rey de Bastos",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/rey_bastos.jpg",
+          significado: "Liderazgo natural, visión, emprendimiento.",
+          palabrasClave: "Liderazgo – Visión – Emprendimiento",
+          consejo: "Usá tu liderazgo natural para inspirar a otros."
+        }
+      ],
+      
+      oros: [
+        {
+          nombre: "As de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/as_oros.jpg",
+          significado: "Nuevas oportunidades materiales, prosperidad, manifestación.",
+          palabrasClave: "Oportunidades – Prosperidad – Manifestación",
+          consejo: "Aprovechá las nuevas oportunidades materiales."
+        },
+        {
+          nombre: "Dos de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/dos_oros.jpg",
+          significado: "Equilibrio financiero, malabarismo, adaptabilidad.",
+          palabrasClave: "Equilibrio – Malabarismo – Adaptabilidad",
+          consejo: "Mantené el equilibrio entre diferentes responsabilidades."
+        },
+        {
+          nombre: "Tres de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/tres_oros.jpg",
+          significado: "Trabajo en equipo, colaboración, habilidad.",
+          palabrasClave: "Trabajo en equipo – Colaboración – Habilidad",
+          consejo: "Colaborá con otros para lograr mejores resultados."
+        },
+        {
+          nombre: "Cuatro de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/cuatro_oros.jpg",
+          significado: "Seguridad material, avaricia, control excesivo.",
+          palabrasClave: "Seguridad – Avaricia – Control",
+          consejo: "Buscá seguridad pero no te aferres demasiado."
+        },
+        {
+          nombre: "Cinco de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/cinco_oros.jpg",
+          significado: "Dificultades financieras, pobreza, ayuda disponible.",
+          palabrasClave: "Dificultades – Pobreza – Ayuda",
+          consejo: "No tengas miedo de pedir ayuda cuando la necesites."
+        },
+        {
+          nombre: "Seis de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/seis_oros.jpg",
+          significado: "Generosidad, caridad, dar y recibir.",
+          palabrasClave: "Generosidad – Caridad – Intercambio",
+          consejo: "Practicá la generosidad y aceptá la ayuda de otros."
+        },
+        {
+          nombre: "Siete de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/siete_oros.jpg",
+          significado: "Paciencia, inversión a largo plazo, evaluación.",
+          palabrasClave: "Paciencia – Inversión – Evaluación",
+          consejo: "Sé paciente, las inversiones a largo plazo dan frutos."
+        },
+        {
+          nombre: "Ocho de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/ocho_oros.jpg",
+          significado: "Dedicación, maestría, perfeccionamiento de habilidades.",
+          palabrasClave: "Dedicación – Maestría – Perfeccionamiento",
+          consejo: "Dedicá tiempo a perfeccionar tus habilidades."
+        },
+        {
+          nombre: "Nueve de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/nueve_oros.jpg",
+          significado: "Independencia financiera, lujo, autosuficiencia.",
+          palabrasClave: "Independencia – Lujo – Autosuficiencia",
+          consejo: "Disfrutá de tu independencia y logros materiales."
+        },
+        {
+          nombre: "Diez de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/diez_oros.jpg",
+          significado: "Riqueza familiar, herencia, seguridad a largo plazo.",
+          palabrasClave: "Riqueza – Herencia – Seguridad",
+          consejo: "Construí un legado duradero para las futuras generaciones."
+        },
+        {
+          nombre: "Sota de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/sota_oros.jpg",
+          significado: "Oportunidades de estudio, nuevas habilidades, manifestación.",
+          palabrasClave: "Estudio – Habilidades – Manifestación",
+          consejo: "Aprovechá las oportunidades de aprendizaje."
+        },
+        {
+          nombre: "Caballero de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/caballero_oros.jpg",
+          significado: "Trabajo duro, responsabilidad, progreso lento pero seguro.",
+          palabrasClave: "Trabajo duro – Responsabilidad – Progreso",
+          consejo: "Sé constante y responsable en tu trabajo."
+        },
+        {
+          nombre: "Reina de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/reina_oros.jpg",
+          significado: "Abundancia, generosidad, cuidado práctico.",
+          palabrasClave: "Abundancia – Generosidad – Cuidado",
+          consejo: "Compartí tu abundancia y cuidá de manera práctica."
+        },
+        {
+          nombre: "Rey de Oros",
+          imagen: "https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/rey_oros.jpg",
+          significado: "Éxito material, liderazgo empresarial, estabilidad.",
+          palabrasClave: "Éxito – Liderazgo – Estabilidad",
+          consejo: "Liderá con sabiduría práctica y construí estabilidad."
+        }
+      ]
+    };
+
     // Función para calcular el signo zodiacal
     function calcularSignoZodiacal(fecha) {
       const fechaNac = new Date(fecha);
       const dia = fechaNac.getDate();
-      const mes = fechaNac.getMonth() + 1; // getMonth() devuelve 0-11
+      const mes = fechaNac.getMonth() + 1;
 
-      if ((mes == 3 && dia >= 20) || (mes == 4 && dia <= 19)) return "♈ Aries";
+      if ((mes == 3 && dia >= 21) || (mes == 4 && dia <= 19)) return "♈ Aries";
       if ((mes == 4 && dia >= 20) || (mes == 5 && dia <= 20)) return "♉ Tauro";
       if ((mes == 5 && dia >= 21) || (mes == 6 && dia <= 20)) return "♊ Géminis";
       if ((mes == 6 && dia >= 21) || (mes == 7 && dia <= 22)) return "♋ Cáncer";
@@ -352,13 +1195,8 @@
     // Función para calcular la fase lunar actual
     function calcularFaseLunar() {
       const hoy = new Date();
-      const año = hoy.getFullYear();
-      const mes = hoy.getMonth();
-      const dia = hoy.getDate();
-      
-      // Cálculo aproximado de la fase lunar
-      const lunaciónDias = 29.53058867; // Duración promedio de un ciclo lunar
-      const fechaReferencia = new Date(2000, 0, 6); // Luna nueva conocida
+      const lunaciónDias = 29.53058867;
+      const fechaReferencia = new Date(2000, 0, 6);
       const diferenciaDias = (hoy - fechaReferencia) / (1000 * 60 * 60 * 24);
       const cicloActual = diferenciaDias / lunaciónDias;
       const faseDecimal = cicloActual - Math.floor(cicloActual);
@@ -370,6 +1208,34 @@
       return "🌑 Luna Nueva";
     }
 
+    // Funciones para navegación entre secciones
+    function mostrarSeccion(seccionId) {
+      document.querySelectorAll('.seccion-oculta').forEach(seccion => {
+        seccion.style.display = 'none';
+      });
+      document.getElementById('seccionPrincipal').style.display = 'none';
+      
+      document.getElementById(seccionId).style.display = 'block';
+      
+      document.querySelectorAll('.btn-seccion').forEach(btn => {
+        btn.classList.remove('activo');
+      });
+      document.querySelector(`[onclick="mostrarSeccion('${seccionId}')"]`).classList.add('activo');
+    }
+
+    function mostrarSeccionPrincipal() {
+      document.querySelectorAll('.seccion-oculta').forEach(seccion => {
+        seccion.style.display = 'none';
+      });
+      document.getElementById('seccionPrincipal').style.display = 'block';
+      
+      document.querySelectorAll('.btn-seccion').forEach(btn => {
+        btn.classList.remove('activo');
+      });
+      document.querySelector('[onclick="mostrarSeccionPrincipal()"]').classList.add('activo');
+    }
+
+    // Funciones de la carta del día (código original)
     function mostrarCarta(carta) {
       document.getElementById("nombreCarta").textContent = carta.nombre;
       document.getElementById("imagenCarta").src = carta.imagen;
@@ -377,7 +1243,6 @@
       document.getElementById("palabrasClaveCarta").textContent = carta.palabrasClave;
       document.getElementById("consejoCarta").textContent = carta.consejo;
       
-      // Mostrar signo zodiacal y fase lunar
       const fecha = document.getElementById("fechaNacimiento").value;
       if (fecha) {
         document.getElementById("signoZodiaco").textContent = calcularSignoZodiacal(fecha);
@@ -402,7 +1267,7 @@
       setTimeout(() => {
         document.getElementById("mensajeBarajar").style.display = "none";
         tirarCarta();
-      }, 3000); // 3 segundos
+      }, 3000);
     }
 
     function tirarCarta() {
@@ -440,26 +1305,16 @@
       }
     }
 
-    // Mostrar automáticamente si ya sacó una carta hoy
-    window.addEventListener('DOMContentLoaded', () => {
-      const today = new Date().toISOString().split('T')[0];
-      const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
-      if (savedData && savedData.fecha === today) {
-        mostrarCarta(savedData.carta);
-      }
-    });
-
     function generarImagen() {
       const elemento = document.getElementById("resultado");
 
       html2canvas(elemento, {
-        useCORS: true,       // permite usar crossorigin
-        allowTaint: false    // no taints the canvas
+        useCORS: true,
+        allowTaint: false
       }).then(canvas => {
         canvas.toBlob(blob => {
           const archivo = new File([blob], 'mi-carta.png', { type: 'image/png' });
 
-          // Si el navegador soporta compartir archivos (móviles)
           if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
             navigator.share({
               title: 'Mi carta del día',
@@ -467,14 +1322,12 @@
               files: [archivo]
             })
             .catch(err => {
-              // Si el usuario canceló el diálogo, simplemente no descargamos
               if (err.name !== 'AbortError') {
                 console.error("Error al compartir:", err);
                 alert("No se pudo compartir tu carta.");
               }
             });
           } else {
-            // Si no se puede compartir (desktop, etc.), lo descargamos
             const enlace = document.createElement('a');
             enlace.href = URL.createObjectURL(blob);
             enlace.download = "mi-carta.png";
@@ -483,8 +1336,508 @@
         });
       });
     }
+
+    // Clase CartaNatal
+    class CartaNatal {
+      constructor() {
+        this.signos = [
+          "Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo",
+          "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"
+        ];
+        
+        this.planetas = [
+          "Sol", "Luna", "Mercurio", "Venus", "Marte", 
+          "Júpiter", "Saturno", "Urano", "Neptuno", "Plutón"
+        ];
+        
+        this.casas = [
+          "Casa I (Ascendente)", "Casa II", "Casa III", "Casa IV", 
+          "Casa V", "Casa VI", "Casa VII", "Casa VIII", 
+          "Casa IX", "Casa X", "Casa XI", "Casa XII"
+        ];
+      }
+
+      calcularSignoSolar(fecha) {
+        return calcularSignoZodiacal(fecha).replace(/♈|♉|♊|♋|♌|♍|♎|♏|♐|♑|♒|♓/, '').trim();
+      }
+
+      calcularAscendente(fecha, hora, latitud) {
+        const fechaNac = new Date(fecha + 'T' + hora);
+        const horaDecimal = fechaNac.getHours() + fechaNac.getMinutes() / 60;
+        const indiceSigno = Math.floor((horaDecimal * 0.5 + latitud * 0.1) % 12);
+        return this.signos[indiceSigno];
+      }
+
+      generarPosicionesPlanetarias(fecha) {
+        const posiciones = {};
+        const fechaNac = new Date(fecha);
+        const diasDesdeEpoca = Math.floor((fechaNac - new Date('2000-01-01')) / (1000 * 60 * 60 * 24));
+        
+        this.planetas.forEach((planeta, index) => {
+          let velocidadOrbital;
+          switch(planeta) {
+            case "Sol": velocidadOrbital = 1; break;
+            case "Luna": velocidadOrbital = 13; break;
+            case "Mercurio": velocidadOrbital = 4; break;
+            case "Venus": velocidadOrbital = 1.6; break;
+            case "Marte": velocidadOrbital = 0.5; break;
+            case "Júpiter": velocidadOrbital = 0.08; break;
+            case "Saturno": velocidadOrbital = 0.03; break;
+            case "Urano": velocidadOrbital = 0.01; break;
+            case "Neptuno": velocidadOrbital = 0.006; break;
+            case "Plutón": velocidadOrbital = 0.004; break;
+            default: velocidadOrbital = 1;
+          }
+          
+          const gradosRecorridos = (diasDesdeEpoca * velocidadOrbital) % 360;
+          const signoIndex = Math.floor(gradosRecorridos / 30);
+          const gradosEnSigno = Math.floor(gradosRecorridos % 30);
+          
+          posiciones[planeta] = {
+            signo: this.signos[signoIndex],
+            grados: gradosEnSigno
+          };
+        });
+        
+        return posiciones;
+      }
+
+      calcularCasas(ascendente) {
+        const indiceAscendente = this.signos.indexOf(ascendente);
+        const casas = {};
+        
+        for (let i = 0; i < 12; i++) {
+          const indiceCasa = (indiceAscendente + i) % 12;
+          casas[this.casas[i]] = this.signos[indiceCasa];
+        }
+        
+        return casas;
+      }
+
+      generarCartaNatal(fecha, hora = "12:00", lugar = "Buenos Aires", latitud = -34.6118) {
+        const signoSolar = this.calcularSignoSolar(fecha);
+        const ascendente = this.calcularAscendente(fecha, hora, latitud);
+        const posicionesPlanetarias = this.generarPosicionesPlanetarias(fecha);
+        const casas = this.calcularCasas(ascendente);
+        
+        return {
+          datosPersonales: { fecha, hora, lugar },
+          signoSolar,
+          ascendente,
+          posicionesPlanetarias,
+          casas,
+          interpretacion: this.generarInterpretacion(signoSolar, ascendente, posicionesPlanetarias)
+        };
+      }
+
+      generarInterpretacion(signoSolar, ascendente, posiciones) {
+        const interpretaciones = {
+          "Aries": "Energía pionera, liderazgo natural, impulso hacia la acción.",
+          "Tauro": "Estabilidad, perseverancia, conexión con lo material y sensual.",
+          "Géminis": "Comunicación, versatilidad, curiosidad intelectual.",
+          "Cáncer": "Sensibilidad emocional, intuición, conexión con el hogar.",
+          "Leo": "Creatividad, expresión personal, carisma natural.",
+          "Virgo": "Análisis, perfeccionismo, servicio a los demás.",
+          "Libra": "Equilibrio, armonía, relaciones interpersonales.",
+          "Escorpio": "Intensidad emocional, transformación, profundidad.",
+          "Sagitario": "Búsqueda de conocimiento, aventura, filosofía.",
+          "Capricornio": "Ambición, estructura, responsabilidad.",
+          "Acuario": "Innovación, independencia, visión humanitaria.",
+          "Piscis": "Intuición, compasión, conexión espiritual."
+        };
+
+        return {
+          signoSolar: `Tu Sol en ${signoSolar} indica: ${interpretaciones[signoSolar]}`,
+          ascendente: `Tu Ascendente en ${ascendente} muestra: ${interpretaciones[ascendente]}`,
+          resumenGeneral: `Con Sol en ${signoSolar} y Ascendente en ${ascendente}, tu personalidad combina las cualidades de ambos signos, creando una expresión única de tu ser.`
+        };
+      }
+    }
+
+    // Clase LecturaPersonalizada
+    class LecturaPersonalizada {
+      constructor() {
+        this.todasLasCartas = [];
+        this.inicializarCartas();
+        
+        this.tiposTirada = {
+          "tres_cartas": {
+            nombre: "Tirada de 3 Cartas",
+            descripcion: "Pasado - Presente - Futuro",
+            posiciones: ["Pasado", "Presente", "Futuro"],
+            numCartas: 3
+          },
+          "cruz_celta": {
+            nombre: "Cruz Celta Simplificada",
+            descripcion: "Lectura completa de 6 cartas",
+            posiciones: ["Situación Actual", "Desafío", "Pasado", "Futuro Posible", "Corona", "Resultado"],
+            numCartas: 6
+          },
+          "amor": {
+            nombre: "Tirada del Amor",
+            descripcion: "Enfoque en relaciones y amor",
+            posiciones: ["Tus Sentimientos", "Sus Sentimientos", "La Relación", "Consejo"],
+            numCartas: 4
+          },
+          "decision": {
+            nombre: "Tirada de Decisión",
+            descripcion: "Para tomar decisiones importantes",
+            posiciones: ["Situación", "Opción A", "Opción B", "Consejo", "Resultado"],
+            numCartas: 5
+          }
+        };
+      }
+
+      inicializarCartas() {
+        this.todasLasCartas = [...cartas];
+        Object.values(arcanosMenoresCompletos).forEach(palo => {
+          this.todasLasCartas.push(...palo);
+        });
+      }
+
+      barajarCartas(array) {
+        const cartasBarajadas = [...array];
+        for (let i = cartasBarajadas.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [cartasBarajadas[i], cartasBarajadas[j]] = [cartasBarajadas[j], cartasBarajadas[i]];
+        }
+        return cartasBarajadas;
+      }
+
+      seleccionarCartas(tipoTirada) {
+        const tirada = this.tiposTirada[tipoTirada];
+        if (!tirada) throw new Error("Tipo de tirada no válido");
+
+        const cartasBarajadas = this.barajarCartas(this.todasLasCartas);
+        const cartasSeleccionadas = cartasBarajadas.slice(0, tirada.numCartas);
+        
+        return {
+          tirada: tirada,
+          cartas: cartasSeleccionadas,
+          fecha: new Date().toISOString().split('T')[0]
+        };
+      }
+
+      interpretarTirada(lectura, pregunta = "") {
+        const interpretacion = {
+          tirada: lectura.tirada,
+          pregunta: pregunta,
+          cartas: [],
+          resumenGeneral: ""
+        };
+
+        lectura.cartas.forEach((carta, index) => {
+          const posicion = lectura.tirada.posiciones[index];
+          interpretacion.cartas.push({
+            posicion: posicion,
+            carta: carta,
+            interpretacionPosicional: this.interpretarCartaEnPosicion(carta, posicion, lectura.tirada.nombre)
+          });
+        });
+
+        interpretacion.resumenGeneral = this.generarResumenGeneral(interpretacion.cartas, lectura.tirada.nombre);
+        return interpretacion;
+      }
+
+      interpretarCartaEnPosicion(carta, posicion, tipoTirada) {
+        const interpretacionBase = carta.consejo || carta.significado;
+        
+        switch(posicion.toLowerCase()) {
+          case "pasado":
+            return `En el pasado: ${interpretacionBase} Esta energía ha influenciado tu situación actual.`;
+          case "presente":
+          case "situación actual":
+            return `En el presente: ${interpretacionBase} Esta es la energía que te rodea ahora.`;
+          case "futuro":
+          case "futuro posible":
+            return `En el futuro: ${interpretacionBase} Esta es la dirección hacia la que te diriges.`;
+          case "desafío":
+            return `Tu desafío: ${interpretacionBase} Esto es lo que necesitas superar o enfrentar.`;
+          case "consejo":
+            return `Consejo: ${interpretacionBase}`;
+          case "tus sentimientos":
+            return `Tus sentimientos: ${interpretacionBase} Esto refleja tu estado emocional.`;
+          case "sus sentimientos":
+            return `Sus sentimientos: ${interpretacionBase} Esto puede reflejar los sentimientos de la otra persona.`;
+          case "la relación":
+            return `La relación: ${interpretacionBase} Esta es la dinámica entre ustedes.`;
+          case "opción a":
+            return `Opción A: ${interpretacionBase} Esta es la energía de la primera opción.`;
+          case "opción b":
+            return `Opción B: ${interpretacionBase} Esta es la energía de la segunda opción.`;
+          case "resultado":
+            return `Resultado: ${interpretacionBase} Este es el posible desenlace.`;
+          case "corona":
+            return `Influencia superior: ${interpretacionBase} Esta energía te guía desde arriba.`;
+          default:
+            return `${posicion}: ${interpretacionBase}`;
+        }
+      }
+
+      generarResumenGeneral(cartasInterpretadas, tipoTirada) {
+        switch(tipoTirada) {
+          case "Tirada de 3 Cartas":
+            return `Esta tirada de tres cartas muestra un viaje desde tu pasado hacia tu futuro. Las energías se conectan para mostrarte cómo las experiencias pasadas influyen en tu presente y cómo puedes dirigirte hacia el futuro que deseas.`;
+          case "Cruz Celta Simplificada":
+            return `La Cruz Celta revela una visión completa de tu situación. Cada carta aporta una perspectiva diferente, desde los desafíos actuales hasta las influencias superiores que te guían hacia el resultado final.`;
+          case "Tirada del Amor":
+            return `Esta tirada del amor explora la dinámica emocional en tu vida. Revela tanto tus sentimientos como los de la otra persona, ofreciendo claridad sobre la relación y el camino a seguir.`;
+          case "Tirada de Decisión":
+            return `Esta tirada te ayuda a evaluar una decisión importante. Compara las diferentes opciones disponibles y te ofrece la sabiduría necesaria para elegir el mejor camino.`;
+          default:
+            return `Esta tirada ofrece una perspectiva única sobre tu situación actual y te guía hacia la comprensión y la acción apropiada.`;
+        }
+      }
+
+      lecturaRapida(pregunta = "") {
+        const cartasBarajadas = this.barajarCartas(this.todasLasCartas);
+        const carta = cartasBarajadas[0];
+        
+        return {
+          tipo: "Lectura Rápida",
+          pregunta: pregunta,
+          carta: carta,
+          interpretacion: `Para tu pregunta "${pregunta}": ${carta.consejo || carta.significado}`,
+          fecha: new Date().toISOString().split('T')[0]
+        };
+      }
+
+      guardarLectura(lectura, tipo = "personalizada") {
+        const lecturas = JSON.parse(localStorage.getItem('lecturasGuardadas') || '[]');
+        const nuevaLectura = {
+          id: Date.now(),
+          tipo: tipo,
+          fecha: new Date().toISOString(),
+          lectura: lectura
+        };
+        
+        lecturas.push(nuevaLectura);
+        
+        if (lecturas.length > 10) {
+          lecturas.splice(0, lecturas.length - 10);
+        }
+        
+        localStorage.setItem('lecturasGuardadas', JSON.stringify(lecturas));
+        return nuevaLectura.id;
+      }
+
+      obtenerLecturasGuardadas() {
+        return JSON.parse(localStorage.getItem('lecturasGuardadas') || '[]');
+      }
+    }
+
+    // Instancias globales
+    const calculadoraCartaNatal = new CartaNatal();
+    const lecturaPersonalizada = new LecturaPersonalizada();
+
+    // Funciones para Carta Natal
+    function calcularCartaNatal() {
+      const fecha = document.getElementById("fechaNacimientoNatal").value;
+      const hora = document.getElementById("horaNacimiento").value || "12:00";
+      const lugar = document.getElementById("lugarNacimiento").value || "Buenos Aires, Argentina";
+      
+      if (!fecha) {
+        alert("Por favor ingresa tu fecha de nacimiento.");
+        return;
+      }
+      
+      const cartaNatal = calculadoraCartaNatal.generarCartaNatal(fecha, hora, lugar);
+      mostrarCartaNatal(cartaNatal);
+    }
+
+    function mostrarCartaNatal(carta) {
+      document.getElementById("datosPersonales").textContent = 
+        `${carta.datosPersonales.fecha} a las ${carta.datosPersonales.hora} en ${carta.datosPersonales.lugar}`;
+      
+      document.getElementById("signoSolar").textContent = carta.signoSolar;
+      document.getElementById("ascendente").textContent = carta.ascendente;
+      
+      const posicionesDiv = document.getElementById("posicionesPlanetarias");
+      posicionesDiv.innerHTML = "";
+      Object.entries(carta.posicionesPlanetarias).forEach(([planeta, posicion]) => {
+        const planetaDiv = document.createElement("div");
+        planetaDiv.className = "planeta-item";
+        planetaDiv.innerHTML = `<strong>${planeta}:</strong> ${posicion.signo} ${posicion.grados}°`;
+        posicionesDiv.appendChild(planetaDiv);
+      });
+      
+      const casasDiv = document.getElementById("casasAstrologicas");
+      casasDiv.innerHTML = "";
+      Object.entries(carta.casas).forEach(([casa, signo]) => {
+        const casaDiv = document.createElement("div");
+        casaDiv.className = "casa-item";
+        casaDiv.innerHTML = `<strong>${casa}:</strong> ${signo}`;
+        casasDiv.appendChild(casaDiv);
+      });
+      
+      document.getElementById("interpretacionSol").textContent = carta.interpretacion.signoSolar;
+      document.getElementById("interpretacionAscendente").textContent = carta.interpretacion.ascendente;
+      document.getElementById("resumenGeneral").textContent = carta.interpretacion.resumenGeneral;
+      
+      document.getElementById("resultadoCartaNatal").style.display = "block";
+    }
+
+    function compartirCartaNatal() {
+      const signoSolar = document.getElementById("signoSolar").textContent;
+      const ascendente = document.getElementById("ascendente").textContent;
+      const mensaje = `Mi Carta Natal: ☀️ Sol en ${signoSolar}, 🌅 Ascendente en ${ascendente}. ¡Descubre la tuya en Luz de Luna - Tarot! 🌟`;
+      
+      if (navigator.share) {
+        navigator.share({
+          title: 'Mi Carta Natal',
+          text: mensaje,
+          url: window.location.href
+        });
+      } else {
+        alert("Compartí este mensaje:\n" + mensaje);
+      }
+    }
+
+    // Funciones para Lectura Personalizada
+    function mostrarDescripcionTirada() {
+      const tipoSeleccionado = document.getElementById("tipoTiradaPersonalizada").value;
+      const descripcionDiv = document.getElementById("descripcionTirada");
+      
+      const descripciones = {
+        "tres_cartas": "<strong>Tirada de 3 Cartas:</strong> Pasado - Presente - Futuro",
+        "cruz_celta": "<strong>Cruz Celta Simplificada:</strong> Situación Actual - Desafío - Pasado - Futuro Posible - Corona - Resultado",
+        "amor": "<strong>Tirada del Amor:</strong> Tus Sentimientos - Sus Sentimientos - La Relación - Consejo",
+        "decision": "<strong>Tirada de Decisión:</strong> Situación - Opción A - Opción B - Consejo - Resultado"
+      };
+      
+      descripcionDiv.innerHTML = `<p>${descripciones[tipoSeleccionado]}</p>`;
+    }
+
+    function realizarLecturaPersonalizada() {
+      const tipoTirada = document.getElementById("tipoTiradaPersonalizada").value;
+      const pregunta = document.getElementById("preguntaPersonalizada").value.trim();
+      
+      if (!pregunta) {
+        alert("Por favor escribe tu pregunta o intención.");
+        return;
+      }
+      
+      const lectura = lecturaPersonalizada.seleccionarCartas(tipoTirada);
+      const interpretacion = lecturaPersonalizada.interpretarTirada(lectura, pregunta);
+      
+      mostrarLecturaPersonalizada(interpretacion);
+    }
+
+    function mostrarLecturaPersonalizada(interpretacion) {
+      document.getElementById("infoTipoTirada").textContent = interpretacion.tirada.nombre;
+      document.getElementById("infoPregunta").textContent = interpretacion.pregunta;
+      document.getElementById("infoFecha").textContent = new Date().toLocaleDateString();
+      
+      const cartasTiradaDiv = document.getElementById("cartasTirada");
+      cartasTiradaDiv.innerHTML = "";
+      
+      interpretacion.cartas.forEach((item, index) => {
+        const cartaDiv = document.createElement("div");
+        cartaDiv.className = "carta-posicion";
+        
+        cartaDiv.innerHTML = `
+          <h4>${item.posicion}</h4>
+          <div class="carta-info">
+            <img src="${item.carta.imagen}" alt="${item.carta.nombre}" crossorigin="anonymous">
+            <div class="carta-detalles">
+              <h5>${item.carta.nombre}</h5>
+              <p><strong>Significado:</strong> ${item.carta.significado || item.carta.resumen}</p>
+              <p><strong>Palabras clave:</strong> ${item.carta.palabrasClave || item.carta.palabrasClave}</p>
+            </div>
+          </div>
+          <div class="interpretacion-posicional">
+            ${item.interpretacionPosicional}
+          </div>
+        `;
+        
+        cartasTiradaDiv.appendChild(cartaDiv);
+      });
+      
+      document.getElementById("resumenGeneralLectura").textContent = interpretacion.resumenGeneral;
+      document.getElementById("resultadoLecturaPersonalizada").style.display = "block";
+      document.getElementById("resultadoLecturaPersonalizada").scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function realizarLecturaRapida() {
+      const pregunta = document.getElementById("preguntaRapida").value.trim() || "¿Qué necesito saber ahora?";
+      
+      const lecturaRapida = lecturaPersonalizada.lecturaRapida(pregunta);
+      
+      document.getElementById("imagenCartaRapida").src = lecturaRapida.carta.imagen;
+      document.getElementById("nombreCartaRapida").textContent = lecturaRapida.carta.nombre;
+      document.getElementById("interpretacionRapida").textContent = lecturaRapida.interpretacion;
+      
+      document.getElementById("resultadoLecturaRapida").style.display = "block";
+    }
+
+    function compartirLecturaPersonalizada() {
+      const tipoTirada = document.getElementById("infoTipoTirada").textContent;
+      const pregunta = document.getElementById("infoPregunta").textContent;
+      
+      const mensaje = `Mi lectura de tarot personalizada: ${tipoTirada}\nPregunta: ${pregunta}\n¡Descubre tu lectura en Luz de Luna - Tarot! 🔮`;
+      
+      if (navigator.share) {
+        navigator.share({
+          title: 'Mi Lectura de Tarot Personalizada',
+          text: mensaje,
+          url: window.location.href
+        });
+      } else {
+        alert("Compartí este mensaje:\n" + mensaje);
+      }
+    }
+
+    function guardarLectura() {
+      const tipoTirada = document.getElementById("infoTipoTirada").textContent;
+      const pregunta = document.getElementById("infoPregunta").textContent;
+      
+      const lecturaParaGuardar = {
+        tipo: tipoTirada,
+        pregunta: pregunta,
+        fecha: new Date().toLocaleDateString()
+      };
+      
+      const id = lecturaPersonalizada.guardarLectura(lecturaParaGuardar);
+      alert("Lectura guardada exitosamente. Puedes verla en tu historial.");
+    }
+
+    function mostrarHistorial() {
+      const historialDiv = document.getElementById("listaHistorial");
+      const lecturas = lecturaPersonalizada.obtenerLecturasGuardadas();
+      
+      if (lecturas.length === 0) {
+        historialDiv.innerHTML = "<p>No tienes lecturas guardadas aún.</p>";
+      } else {
+        historialDiv.innerHTML = "";
+        lecturas.reverse().forEach(lectura => {
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "item-historial";
+          
+          const fecha = new Date(lectura.fecha).toLocaleDateString();
+          itemDiv.innerHTML = `
+            <h5>${lectura.lectura.tipo || lectura.tipo}</h5>
+            <p><strong>Pregunta:</strong> ${lectura.lectura.pregunta || lectura.pregunta}</p>
+            <p><strong>Fecha:</strong> ${fecha}</p>
+          `;
+          
+          historialDiv.appendChild(itemDiv);
+        });
+      }
+      
+      historialDiv.style.display = historialDiv.style.display === "none" ? "block" : "none";
+    }
+
+    // Mostrar automáticamente si ya sacó una carta hoy
+    window.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
+      if (savedData && savedData.fecha === today) {
+        mostrarCarta(savedData.carta);
+      }
+    });
   </script>
   
 </body>
 </html>
+
 
