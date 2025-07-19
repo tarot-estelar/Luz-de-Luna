@@ -328,7 +328,56 @@
     document.getElementById("resultado").style.display = "block";
     document.getElementById("botonCompartir").style.display = "inline-block";
   }
+
+function obtenerSignoZodiacal(fecha) {
+  const dia = parseInt(fecha.split("-")[2]);
+  const mes = parseInt(fecha.split("-")[1]);
+  const signos = [
+    { nombre: "Capricornio", fin: [1, 19] },
+    { nombre: "Acuario", fin: [2, 18] },
+    { nombre: "Piscis", fin: [3, 20] },
+    { nombre: "Aries", fin: [4, 19] },
+    { nombre: "Tauro", fin: [5, 20] },
+    { nombre: "Géminis", fin: [6, 20] },
+    { nombre: "Cáncer", fin: [7, 22] },
+    { nombre: "Leo", fin: [8, 22] },
+    { nombre: "Virgo", fin: [9, 22] },
+    { nombre: "Libra", fin: [10, 22] },
+    { nombre: "Escorpio", fin: [11, 21] },
+    { nombre: "Sagitario", fin: [12, 21] },
+    { nombre: "Capricornio", fin: [12, 31] }
+  ];
+
+  for (let i = 0; i < signos.length; i++) {
+    const [m, d] = signos[i].fin;
+    if (mes < m || (mes === m && dia <= d)) {
+      return signos[i].nombre;
+    }
+  }
+  return "Capricornio";
+}
+
+
 function iniciarLectura() {
+  const fecha = document.getElementById("fechaNacimiento").value;
+  const pregunta = document.getElementById("preguntaUsuario").value;
+
+  if (!fecha) {
+    alert("Por favor completá tu fecha de nacimiento.");
+    return;
+  }
+
+  const signo = obtenerSignoZodiacal(fecha);
+  document.getElementById("signoZodiaco").textContent = signo;
+
+  document.getElementById("mensajeBarajar").style.display = "block";
+
+  setTimeout(() => {
+    document.getElementById("mensajeBarajar").style.display = "none";
+    tirarCarta();
+  }, 3000);
+}
+ {
   const fecha = document.getElementById("fechaNacimiento").value;
   const pregunta = document.getElementById("preguntaUsuario").value;
 
