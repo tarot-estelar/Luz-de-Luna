@@ -76,18 +76,27 @@
 
     a {
       color: #ffcaff;
+    }
       
-        .tituloCompartir {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 4px 12px;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 6px;
-    background-color: rgba(255,255,255,0.1);
-    font-weight: bold;
-    color: #f0e6ff;
-    font-size: 1rem;
-      }
+    .tituloCompartir {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 12px;
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 6px;
+      background-color: rgba(255,255,255,0.1);
+      font-weight: bold;
+      color: #f0e6ff;
+      font-size: 1rem;
+    }
+
+    .signo-info {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      border-left: 4px solid #dabfff;
+    }
   </style>
 </head>
 <body>
@@ -102,58 +111,57 @@
   <input type="text" id="preguntaUsuario" placeholder="¿Qué necesito saber hoy?" style="margin: 10px; padding: 5px; width: 30%; border-radius: 6px;"><br>
 
   <button class="btn" onclick="iniciarLectura()">Tu Carta</button>
-</div>
 
-<div id="mensajeBarajar" style="display:none; font-size: 1.2rem; margin-top: 20px;">🔮 Conectando con tu energía...</div>
+  <div id="mensajeBarajar" style="display:none; font-size: 1.2rem; margin-top: 20px;">🔮 Conectando con tu energía...</div>
 
- <div id="resultado" class="card" style="display: none;">
+  <div id="resultado" class="card" style="display: none;">
     <h2 id="nombreCarta"></h2>
     <!-- Agregamos crossorigin para html2canvas -->
     <img id="imagenCarta" crossorigin="anonymous" src="" alt="Carta de Tarot" />
 
-   <div id="marcaSitio" style="
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 10px 20px;
-  margin-top: 10px;
-  border-radius: 8px;
-  font-weight: bold;
-  color: #dabfff;
-  font-size: 1.1rem;
-  width: 90%;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-">
-  Luz de Luna – Tarot 🔮
-</div>
+    <div id="marcaSitio" style="
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #dabfff;
+      font-size: 1.1rem;
+      width: 90%;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    ">
+      Luz de Luna – Tarot 🔮
+    </div>
    
-   <p><strong>🌟Mensaje:</strong> <span id="resumenCarta"></span></p>
+    <p><strong>🌟Mensaje:</strong> <span id="resumenCarta"></span></p>
     <p><strong>🔑Palabras clave:</strong> <span id="palabrasClaveCarta"></span></p>
     <p><strong>🧭Consejo:</strong> <span id="consejoCarta"></span></p>
+    
+    <!-- Información del signo zodiacal y fase lunar -->
+    <div class="signo-info">
+      <p><strong>✨ Signo zodiacal:</strong> <span id="signoZodiaco"></span></p>
+      <p><strong>🌙 Fase lunar:</strong> <span id="faseLunar"></span></p>
+    </div>
+    
     <button class="btn" onclick="generarImagen()" id="botonCompartir" style="display: none;">
       Compartir tu carta
     </button>
-
- </div>
-
-</script>
-  <p><strong>✨ Signo zodiacal:</strong> <span id="signoZodiaco"></span></p>
-<p><strong>🌙 Fase lunar:</strong> <span id="faseLunar"></span></p>
-</script>
-
+  </div>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1330671703784338"
      crossorigin="anonymous"></script>
-<!-- Banner inferior -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1330671703784338"
-     data-ad-slot="6495754373"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+  <!-- Banner inferior -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1330671703784338"
+       data-ad-slot="6495754373"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
    
   <p>Si te gustó <a href="https://www.buymeacoffee.com/luzdelunatarot" target="_blank">Podes invitarme un cafecito 💖</a></p>
 
@@ -319,122 +327,129 @@
       }
     ];
 
-      function mostrarCarta(carta) {
-    document.getElementById("nombreCarta").textContent = carta.nombre;
-    document.getElementById("imagenCarta").src = carta.imagen;
-    document.getElementById("resumenCarta").textContent = carta.resumen;
-    document.getElementById("palabrasClaveCarta").textContent = carta.palabrasClave;
-    document.getElementById("consejoCarta").textContent = carta.consejo;
-    document.getElementById("resultado").style.display = "block";
-    document.getElementById("botonCompartir").style.display = "inline-block";
-  }
+    // Función para calcular el signo zodiacal
+    function calcularSignoZodiacal(fecha) {
+      const fechaNac = new Date(fecha);
+      const dia = fechaNac.getDate();
+      const mes = fechaNac.getMonth() + 1; // getMonth() devuelve 0-11
 
-function obtenerSignoZodiacal(fecha) {
-  const dia = parseInt(fecha.split("-")[2]);
-  const mes = parseInt(fecha.split("-")[1]);
-  const signos = [
-    { nombre: "Capricornio", fin: [1, 19] },
-    { nombre: "Acuario", fin: [2, 18] },
-    { nombre: "Piscis", fin: [3, 20] },
-    { nombre: "Aries", fin: [4, 19] },
-    { nombre: "Tauro", fin: [5, 20] },
-    { nombre: "Géminis", fin: [6, 20] },
-    { nombre: "Cáncer", fin: [7, 22] },
-    { nombre: "Leo", fin: [8, 22] },
-    { nombre: "Virgo", fin: [9, 22] },
-    { nombre: "Libra", fin: [10, 22] },
-    { nombre: "Escorpio", fin: [11, 21] },
-    { nombre: "Sagitario", fin: [12, 21] },
-    { nombre: "Capricornio", fin: [12, 31] }
-  ];
-
-  for (let i = 0; i < signos.length; i++) {
-    const [m, d] = signos[i].fin;
-    if (mes < m || (mes === m && dia <= d)) {
-      return signos[i].nombre;
-    }
-  }
-  return "Capricornio";
-}
-
-
-function iniciarLectura() {
-  const fecha = document.getElementById("fechaNacimiento").value;
-  const pregunta = document.getElementById("preguntaUsuario").value;
-
-  if (!fecha) {
-    alert("Por favor completá tu fecha de nacimiento.");
-    return;
-  }
-
-  const signo = obtenerSignoZodiacal(fecha);
-  document.getElementById("signoZodiaco").textContent = signo;
-
-  document.getElementById("mensajeBarajar").style.display = "block";
-
-  setTimeout(() => {
-    document.getElementById("mensajeBarajar").style.display = "none";
-    tirarCarta();
-  }, 3000);
-}
- {
-  const fecha = document.getElementById("fechaNacimiento").value;
-  const pregunta = document.getElementById("preguntaUsuario").value;
-
-  if (!fecha ) {
-    alert("Por favor completá tu fecha de nacimiento.");
-    return;
-  }
-
-  document.getElementById("mensajeBarajar").style.display = "block";
-
-  setTimeout(() => {
-    document.getElementById("mensajeBarajar").style.display = "none";
-    tirarCarta();
-  }, 3000); // 3 segundos
-}
-  function tirarCarta() {
-    const today = new Date().toISOString().split('T')[0];
-    const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
-
-    if (savedData && savedData.fecha === today) {
-      alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
-      mostrarCarta(savedData.carta);
-      return;
+      if ((mes == 3 && dia >= 21) || (mes == 4 && dia <= 19)) return "♈ Aries";
+      if ((mes == 4 && dia >= 20) || (mes == 5 && dia <= 20)) return "♉ Tauro";
+      if ((mes == 5 && dia >= 21) || (mes == 6 && dia <= 20)) return "♊ Géminis";
+      if ((mes == 6 && dia >= 21) || (mes == 7 && dia <= 22)) return "♋ Cáncer";
+      if ((mes == 7 && dia >= 23) || (mes == 8 && dia <= 22)) return "♌ Leo";
+      if ((mes == 8 && dia >= 23) || (mes == 9 && dia <= 22)) return "♍ Virgo";
+      if ((mes == 9 && dia >= 23) || (mes == 10 && dia <= 22)) return "♎ Libra";
+      if ((mes == 10 && dia >= 23) || (mes == 11 && dia <= 21)) return "♏ Escorpio";
+      if ((mes == 11 && dia >= 22) || (mes == 12 && dia <= 21)) return "♐ Sagitario";
+      if ((mes == 12 && dia >= 22) || (mes == 1 && dia <= 19)) return "♑ Capricornio";
+      if ((mes == 1 && dia >= 20) || (mes == 2 && dia <= 18)) return "♒ Acuario";
+      if ((mes == 2 && dia >= 19) || (mes == 3 && dia <= 20)) return "♓ Piscis";
+      
+      return "Signo no determinado";
     }
 
-    const carta = cartas[Math.floor(Math.random() * cartas.length)];
-    localStorage.setItem('cartaDelDia', JSON.stringify({ fecha: today, carta }));
-    mostrarCarta(carta);
-  }
-
-  function compartirCarta() {
-    const carta = document.getElementById("nombreCarta").textContent;
-    const resumen = document.getElementById("resumenCarta").textContent;
-    const palabras = document.getElementById("palabrasClaveCarta").textContent;
-    const consejo = document.getElementById("consejoCarta").textContent;
-    const mensaje = `Mi carta del día es ${carta}: 🌟 ${resumen}\n🔑 ${palabras}\n🧭 ${consejo}`;
-
-    if (navigator.share) {
-      navigator.share({
-        title: 'Mi carta del día',
-        text: mensaje,
-        url: window.location.href
-      });
-    } else {
-      alert("Compartí este mensaje:\n" + mensaje);
+    // Función para calcular la fase lunar actual
+    function calcularFaseLunar() {
+      const hoy = new Date();
+      const año = hoy.getFullYear();
+      const mes = hoy.getMonth();
+      const dia = hoy.getDate();
+      
+      // Cálculo aproximado de la fase lunar
+      const lunaciónDias = 29.53058867; // Duración promedio de un ciclo lunar
+      const fechaReferencia = new Date(2000, 0, 6); // Luna nueva conocida
+      const diferenciaDias = (hoy - fechaReferencia) / (1000 * 60 * 60 * 24);
+      const cicloActual = diferenciaDias / lunaciónDias;
+      const faseDecimal = cicloActual - Math.floor(cicloActual);
+      
+      if (faseDecimal < 0.125) return "🌑 Luna Nueva";
+      if (faseDecimal < 0.375) return "🌒 Luna Creciente";
+      if (faseDecimal < 0.625) return "🌕 Luna Llena";
+      if (faseDecimal < 0.875) return "🌘 Luna Menguante";
+      return "🌑 Luna Nueva";
     }
-  }
 
-  // Mostrar automáticamente si ya sacó una carta hoy
-  window.addEventListener('DOMContentLoaded', () => {
-    const today = new Date().toISOString().split('T')[0];
-    const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
-    if (savedData && savedData.fecha === today) {
-      mostrarCarta(savedData.carta);
+    function mostrarCarta(carta) {
+      document.getElementById("nombreCarta").textContent = carta.nombre;
+      document.getElementById("imagenCarta").src = carta.imagen;
+      document.getElementById("resumenCarta").textContent = carta.resumen;
+      document.getElementById("palabrasClaveCarta").textContent = carta.palabrasClave;
+      document.getElementById("consejoCarta").textContent = carta.consejo;
+      
+      // Mostrar signo zodiacal y fase lunar
+      const fecha = document.getElementById("fechaNacimiento").value;
+      if (fecha) {
+        document.getElementById("signoZodiaco").textContent = calcularSignoZodiacal(fecha);
+      }
+      document.getElementById("faseLunar").textContent = calcularFaseLunar();
+      
+      document.getElementById("resultado").style.display = "block";
+      document.getElementById("botonCompartir").style.display = "inline-block";
     }
-  });
-  function generarImagen() {
+
+    function iniciarLectura() {
+      const fecha = document.getElementById("fechaNacimiento").value;
+      const pregunta = document.getElementById("preguntaUsuario").value;
+
+      if (!fecha) {
+        alert("Por favor completá tu fecha de nacimiento.");
+        return;
+      }
+
+      document.getElementById("mensajeBarajar").style.display = "block";
+
+      setTimeout(() => {
+        document.getElementById("mensajeBarajar").style.display = "none";
+        tirarCarta();
+      }, 3000); // 3 segundos
+    }
+
+    function tirarCarta() {
+      const today = new Date().toISOString().split('T')[0];
+      const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
+
+      if (savedData && savedData.fecha === today) {
+        alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
+        mostrarCarta(savedData.carta);
+        return;
+      }
+
+      const carta = cartas[Math.floor(Math.random() * cartas.length)];
+      localStorage.setItem('cartaDelDia', JSON.stringify({ fecha: today, carta }));
+      mostrarCarta(carta);
+    }
+
+    function compartirCarta() {
+      const carta = document.getElementById("nombreCarta").textContent;
+      const resumen = document.getElementById("resumenCarta").textContent;
+      const palabras = document.getElementById("palabrasClaveCarta").textContent;
+      const consejo = document.getElementById("consejoCarta").textContent;
+      const signo = document.getElementById("signoZodiaco").textContent;
+      const fase = document.getElementById("faseLunar").textContent;
+      const mensaje = `Mi carta del día es ${carta}: 🌟 ${resumen}\n🔑 ${palabras}\n🧭 ${consejo}\n✨ ${signo}\n🌙 ${fase}`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Mi carta del día',
+          text: mensaje,
+          url: window.location.href
+        });
+      } else {
+        alert("Compartí este mensaje:\n" + mensaje);
+      }
+    }
+
+    // Mostrar automáticamente si ya sacó una carta hoy
+    window.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
+      if (savedData && savedData.fecha === today) {
+        mostrarCarta(savedData.carta);
+      }
+    });
+
+    function generarImagen() {
       const elemento = document.getElementById("resultado");
 
       html2canvas(elemento, {
@@ -468,12 +483,8 @@ function iniciarLectura() {
         });
       });
     }
-
-    // Mostrar carta al recargar si ya la sacó hoy
-    window.addEventListener('DOMContentLoaded', () => {
-      // ... tu código de mostrar carta guardada ...
-    });
   </script>
   
 </body>
 </html>
+
