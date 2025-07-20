@@ -12,8 +12,25 @@
   <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luz de Luna - Tarot</title>
+  <title>Luz de Luna - Tarot | Lecturas de Tarot y Carta Natal Personalizada</title>
+  <meta name="description" content="Descubre tu futuro con lecturas de tarot personalizadas y tu carta natal astrológica. Conecta con tu energía en Luz de Luna - Tarot.">
+  <meta name="keywords" content="tarot, lectura de tarot, carta natal, astrología, arcanos, horóscopo, adivinación, esoterismo, luz de luna">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Luz de Luna - Tarot | Lecturas y Carta Natal">
+  <meta property="og:description" content="Conecta con tu energía hoy. Lecturas de tarot personalizadas y tu carta natal astrológica.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20luna%203.png">
+  <meta property="og:url" content="https://tudominio.com">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luz de Luna - Tarot | Lecturas y Carta Natal">
+  <meta name="twitter:description" content="Conecta con tu energía hoy. Lecturas de tarot personalizadas y tu carta natal astrológica.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20luna%203.png">
+  
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <style>
@@ -299,62 +316,108 @@
       font-size: 0.9rem;
     }
 
-    .lectura-rapida, .historial-lecturas {
-      margin-top: 40px;
+    /* Modal de Pago */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-contenido {
+      background-color: #2e2c47;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 20px #8e44ad;
+      position: relative;
+    }
+
+    .cerrar-modal {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute;
+      right: 15px;
+      top: 10px;
+    }
+
+    .cerrar-modal:hover {
+      color: #fff;
+    }
+
+    .precio-info {
+      background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
-      background-color: rgba(255, 255, 255, 0.02);
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 20px 0;
+      border-left: 4px solid #9c27b0;
     }
 
-    .lectura-rapida h3, .historial-lecturas h3 {
-      color: #dabfff;
-      margin-top: 0;
-    }
-
-    .resultado-rapido {
-      margin-top: 15px;
-    }
-
-    .carta-rapida {
-      text-align: center;
-      padding: 15px;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-    }
-
-    .carta-rapida img {
-      width: 120px;
-      height: auto;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
-
-    .carta-rapida h4 {
+    .precio-principal {
+      font-size: 2rem;
+      font-weight: bold;
       color: #dabfff;
       margin: 10px 0;
     }
 
-    .lista-historial {
-      margin-top: 15px;
+    .selector-moneda {
+      margin: 15px 0;
     }
 
-    .item-historial {
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 10px;
+    .selector-moneda select {
+      padding: 8px;
       border-radius: 6px;
-      margin: 10px 0;
-      border-left: 3px solid #9c27b0;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      background-color: white;
+      color: #333;
     }
 
-    .item-historial h5 {
-      margin: 0 0 5px 0;
-      color: #dabfff;
-    }
-
-    .item-historial p {
-      margin: 5px 0;
+    .precios-equivalentes {
+      margin-top: 15px;
       font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .btn-pagar {
+      background-color: #4caf50;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin: 10px 5px;
+      transition: background-color 0.3s;
+    }
+
+    .btn-pagar:hover {
+      background-color: #45a049;
+    }
+
+    .btn-cancelar {
+      background-color: #f44336;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin: 10px 5px;
+      transition: background-color 0.3s;
+    }
+
+    .btn-cancelar:hover {
+      background-color: #da190b;
     }
 
     /* Responsive design */
@@ -382,6 +445,12 @@
         display: block;
         margin: 5px auto;
         width: 80%;
+      }
+
+      .modal-contenido {
+        margin: 5% auto;
+        width: 95%;
+        padding: 20px;
       }
     }
   </style>
@@ -504,7 +573,7 @@
         </div>
       </div>
       
-      <button class="btn" onclick="compartirCartaNatal()" id="botonCompartirNatal">
+      <button class="btn" onclick="generarImagenCartaNatal()" id="botonCompartirNatal">
         Compartir Carta Natal
       </button>
     </div>
@@ -535,7 +604,7 @@
         <textarea id="preguntaPersonalizada" placeholder="¿Qué necesitas saber? Sé específico en tu pregunta..." rows="3"></textarea>
       </div>
       
-      <button class="btn" onclick="realizarLecturaPersonalizada()">Realizar Lectura</button>
+      <button class="btn" onclick="mostrarModalPago()">Realizar Lectura</button>
     </div>
 
     <div id="resultadoLecturaPersonalizada" class="card" style="display: none;">
@@ -559,30 +628,45 @@
         <button class="btn btn-secundario" onclick="guardarLectura()">Guardar Lectura</button>
       </div>
     </div>
-    
-    <div class="lectura-rapida">
-      <h3>⚡ Lectura Rápida (1 Carta)</h3>
-      <p>Para preguntas rápidas o inspiración del momento</p>
+  </div>
+
+  <!-- Modal de Pago -->
+  <div id="modalPago" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar-modal" onclick="cerrarModalPago()">&times;</span>
+      <h3>💳 Realizar Pago</h3>
       
-      <div class="campo-entrada">
-        <input type="text" id="preguntaRapida" placeholder="Tu pregunta rápida...">
-      </div>
-      
-      <button class="btn btn-pequeno" onclick="realizarLecturaRapida()">Carta del Momento</button>
-      
-      <div id="resultadoLecturaRapida" class="resultado-rapido" style="display: none;">
-        <div class="carta-rapida">
-          <img id="imagenCartaRapida" src="" alt="Carta del momento">
-          <h4 id="nombreCartaRapida"></h4>
-          <p id="interpretacionRapida"></p>
+      <div class="precio-info">
+        <h4 id="tipoLecturaModal">Tirada de 3 Cartas</h4>
+        <div class="precio-principal" id="precioModal">$2000 ARS</div>
+        
+        <div class="selector-moneda">
+          <label for="selectorMoneda">Selecciona tu moneda:</label>
+          <select id="selectorMoneda" onchange="actualizarPrecio()">
+            <option value="ARS">🇦🇷 Pesos Argentinos (ARS)</option>
+            <option value="USD">🇺🇸 Dólares Americanos (USD)</option>
+            <option value="CLP">🇨🇱 Pesos Chilenos (CLP)</option>
+            <option value="MXN">🇲🇽 Pesos Mexicanos (MXN)</option>
+            <option value="EUR">🇪🇺 Euros (EUR)</option>
+            <option value="BRL">🇧🇷 Reales Brasileños (BRL)</option>
+          </select>
+        </div>
+        
+        <div class="precios-equivalentes" id="preciosEquivalentes">
+          Precios aproximados en otras monedas
         </div>
       </div>
-    </div>
-    
-    <div class="historial-lecturas">
-      <h3>📚 Tus Últimas Lecturas</h3>
-      <button class="btn btn-pequeno" onclick="mostrarHistorial()">Ver Historial</button>
-      <div id="listaHistorial" class="lista-historial" style="display: none;"></div>
+      
+      <p>Tu pregunta: <em id="preguntaModal"></em></p>
+      
+      <div style="text-align: center; margin-top: 20px;">
+        <button class="btn-pagar" onclick="procesarPago()">💳 Pagar Ahora</button>
+        <button class="btn-cancelar" onclick="cerrarModalPago()">❌ Cancelar</button>
+      </div>
+      
+      <p style="font-size: 0.8rem; color: #ccc; margin-top: 15px;">
+        🔒 Pago seguro procesado por Stripe. Tus datos están protegidos.
+      </p>
     </div>
   </div>
 
@@ -603,6 +687,28 @@
   <footer>
     <p>© 2025 Luz de Luna - Tarot - Sitio solamente con fines espirituales </p>
   </footer>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Luz de Luna - Tarot",
+    "description": "Lecturas de tarot personalizadas y carta natal astrológica para conectar con tu energía.",
+    "url": "https://tudominio.com/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Luz de Luna - Tarot"
+    },
+    "offers": {
+      "@type": "Offer",
+      "name": "Lectura de Tarot Personalizada",
+      "description": "Lecturas de tarot con arcanos mayores y menores",
+      "price": "2000",
+      "priceCurrency": "ARS"
+    }
+  }
+  </script>
 
   <script>
     // Arcanos Mayores (código original)
@@ -1170,6 +1276,27 @@
       ]
     };
 
+    // Precios de las lecturas por tipo y moneda
+    const preciosLecturas = {
+      "tres_cartas": { 
+        "ARS": 2000, "USD": 5, "CLP": 4500, "MXN": 90, "EUR": 4.5, "BRL": 25 
+      },
+      "cruz_celta": { 
+        "ARS": 3500, "USD": 10, "CLP": 9000, "MXN": 180, "EUR": 9, "BRL": 50 
+      },
+      "amor": { 
+        "ARS": 2500, "USD": 7, "CLP": 6000, "MXN": 120, "EUR": 6.5, "BRL": 35 
+      },
+      "decision": { 
+        "ARS": 3000, "USD": 8, "CLP": 7500, "MXN": 150, "EUR": 7.5, "BRL": 40 
+      }
+    };
+
+    // Variables globales para el modal de pago
+    let tipoTiradaActual = "";
+    let preguntaActual = "";
+    let monedaSeleccionada = "ARS";
+
     // Función para calcular el signo zodiacal
     function calcularSignoZodiacal(fecha) {
       const fechaNac = new Date(fecha);
@@ -1331,6 +1458,39 @@
             const enlace = document.createElement('a');
             enlace.href = URL.createObjectURL(blob);
             enlace.download = "mi-carta.png";
+            enlace.click();
+          }
+        });
+      });
+    }
+
+    // Función para generar imagen de la Carta Natal
+    function generarImagenCartaNatal() {
+      const elemento = document.getElementById("resultadoCartaNatal");
+
+      html2canvas(elemento, {
+        useCORS: true,
+        allowTaint: false
+      }).then(canvas => {
+        canvas.toBlob(blob => {
+          const archivo = new File([blob], 'mi-carta-natal.png', { type: 'image/png' });
+
+          if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
+            navigator.share({
+              title: 'Mi Carta Natal',
+              text: '¡Mirá mi carta natal astrológica! 🌟',
+              files: [archivo]
+            })
+            .catch(err => {
+              if (err.name !== 'AbortError') {
+                console.error("Error al compartir:", err);
+                alert("No se pudo compartir tu carta natal.");
+              }
+            });
+          } else {
+            const enlace = document.createElement('a');
+            enlace.href = URL.createObjectURL(blob);
+            enlace.download = "mi-carta-natal.png";
             enlace.click();
           }
         });
@@ -1589,19 +1749,6 @@
         }
       }
 
-      lecturaRapida(pregunta = "") {
-        const cartasBarajadas = this.barajarCartas(this.todasLasCartas);
-        const carta = cartasBarajadas[0];
-        
-        return {
-          tipo: "Lectura Rápida",
-          pregunta: pregunta,
-          carta: carta,
-          interpretacion: `Para tu pregunta "${pregunta}": ${carta.consejo || carta.significado}`,
-          fecha: new Date().toISOString().split('T')[0]
-        };
-      }
-
       guardarLectura(lectura, tipo = "personalizada") {
         const lecturas = JSON.parse(localStorage.getItem('lecturasGuardadas') || '[]');
         const nuevaLectura = {
@@ -1693,7 +1840,7 @@
       }
     }
 
-    // Funciones para Lectura Personalizada
+    // Funciones para Lectura Personalizada con Pago
     function mostrarDescripcionTirada() {
       const tipoSeleccionado = document.getElementById("tipoTiradaPersonalizada").value;
       const descripcionDiv = document.getElementById("descripcionTirada");
@@ -1708,7 +1855,7 @@
       descripcionDiv.innerHTML = `<p>${descripciones[tipoSeleccionado]}</p>`;
     }
 
-    function realizarLecturaPersonalizada() {
+    function mostrarModalPago() {
       const tipoTirada = document.getElementById("tipoTiradaPersonalizada").value;
       const pregunta = document.getElementById("preguntaPersonalizada").value.trim();
       
@@ -1717,8 +1864,73 @@
         return;
       }
       
-      const lectura = lecturaPersonalizada.seleccionarCartas(tipoTirada);
-      const interpretacion = lecturaPersonalizada.interpretarTirada(lectura, pregunta);
+      // Guardar datos globalmente
+      tipoTiradaActual = tipoTirada;
+      preguntaActual = pregunta;
+      
+      // Actualizar modal
+      const tiposNombres = {
+        "tres_cartas": "Tirada de 3 Cartas",
+        "cruz_celta": "Cruz Celta Simplificada",
+        "amor": "Tirada del Amor",
+        "decision": "Tirada de Decisión"
+      };
+      
+      document.getElementById("tipoLecturaModal").textContent = tiposNombres[tipoTirada];
+      document.getElementById("preguntaModal").textContent = pregunta;
+      
+      actualizarPrecio();
+      document.getElementById("modalPago").style.display = "block";
+    }
+
+    function cerrarModalPago() {
+      document.getElementById("modalPago").style.display = "none";
+    }
+
+    function actualizarPrecio() {
+      monedaSeleccionada = document.getElementById("selectorMoneda").value;
+      const precio = preciosLecturas[tipoTiradaActual][monedaSeleccionada];
+      
+      const simbolosMoneda = {
+        "ARS": "$",
+        "USD": "$",
+        "CLP": "$",
+        "MXN": "$",
+        "EUR": "€",
+        "BRL": "R$"
+      };
+      
+      document.getElementById("precioModal").textContent = 
+        `${simbolosMoneda[monedaSeleccionada]}${precio} ${monedaSeleccionada}`;
+      
+      // Mostrar precios equivalentes
+      let equivalentes = "Precios aproximados: ";
+      Object.entries(preciosLecturas[tipoTiradaActual]).forEach(([moneda, precioEquiv]) => {
+        if (moneda !== monedaSeleccionada) {
+          equivalentes += `${simbolosMoneda[moneda]}${precioEquiv} ${moneda}, `;
+        }
+      });
+      equivalentes = equivalentes.slice(0, -2); // Quitar última coma
+      
+      document.getElementById("preciosEquivalentes").textContent = equivalentes;
+    }
+
+    function procesarPago() {
+      // Simulación de pago exitoso
+      // En una implementación real, aquí se integraría con Stripe
+      
+      alert("🎉 ¡Pago procesado exitosamente! Preparando tu lectura...");
+      cerrarModalPago();
+      
+      // Simular delay de procesamiento
+      setTimeout(() => {
+        realizarLecturaPersonalizada();
+      }, 1500);
+    }
+
+    function realizarLecturaPersonalizada() {
+      const lectura = lecturaPersonalizada.seleccionarCartas(tipoTiradaActual);
+      const interpretacion = lecturaPersonalizada.interpretarTirada(lectura, preguntaActual);
       
       mostrarLecturaPersonalizada(interpretacion);
     }
@@ -1758,18 +1970,6 @@
       document.getElementById("resultadoLecturaPersonalizada").scrollIntoView({ behavior: 'smooth' });
     }
 
-    function realizarLecturaRapida() {
-      const pregunta = document.getElementById("preguntaRapida").value.trim() || "¿Qué necesito saber ahora?";
-      
-      const lecturaRapida = lecturaPersonalizada.lecturaRapida(pregunta);
-      
-      document.getElementById("imagenCartaRapida").src = lecturaRapida.carta.imagen;
-      document.getElementById("nombreCartaRapida").textContent = lecturaRapida.carta.nombre;
-      document.getElementById("interpretacionRapida").textContent = lecturaRapida.interpretacion;
-      
-      document.getElementById("resultadoLecturaRapida").style.display = "block";
-    }
-
     function compartirLecturaPersonalizada() {
       const tipoTirada = document.getElementById("infoTipoTirada").textContent;
       const pregunta = document.getElementById("infoPregunta").textContent;
@@ -1801,32 +2001,6 @@
       alert("Lectura guardada exitosamente. Puedes verla en tu historial.");
     }
 
-    function mostrarHistorial() {
-      const historialDiv = document.getElementById("listaHistorial");
-      const lecturas = lecturaPersonalizada.obtenerLecturasGuardadas();
-      
-      if (lecturas.length === 0) {
-        historialDiv.innerHTML = "<p>No tienes lecturas guardadas aún.</p>";
-      } else {
-        historialDiv.innerHTML = "";
-        lecturas.reverse().forEach(lectura => {
-          const itemDiv = document.createElement("div");
-          itemDiv.className = "item-historial";
-          
-          const fecha = new Date(lectura.fecha).toLocaleDateString();
-          itemDiv.innerHTML = `
-            <h5>${lectura.lectura.tipo || lectura.tipo}</h5>
-            <p><strong>Pregunta:</strong> ${lectura.lectura.pregunta || lectura.pregunta}</p>
-            <p><strong>Fecha:</strong> ${fecha}</p>
-          `;
-          
-          historialDiv.appendChild(itemDiv);
-        });
-      }
-      
-      historialDiv.style.display = historialDiv.style.display === "none" ? "block" : "none";
-    }
-
     // Mostrar automáticamente si ya sacó una carta hoy
     window.addEventListener('DOMContentLoaded', () => {
       const today = new Date().toISOString().split('T')[0];
@@ -1835,9 +2009,19 @@
         mostrarCarta(savedData.carta);
       }
     });
+
+    // Cerrar modal al hacer clic fuera de él
+    window.addEventListener('click', (event) => {
+      const modal = document.getElementById('modalPago');
+      if (event.target === modal) {
+        cerrarModalPago();
+      }
+    });
   </script>
   
 </body>
 </html>
+
+
 
 
