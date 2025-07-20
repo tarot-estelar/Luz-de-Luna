@@ -5,9 +5,9 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  gtag("js", new Date());
 
-  gtag('config', 'G-N5WR8LC8ZT');
+  gtag("config", "G-N5WR8LC8ZT");
 </script>
   <head>
   <meta charset="UTF-8" />
@@ -35,7 +35,7 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <style>
     body {
-      font-family: 'Georgia', serif;
+      font-family: "Georgia", serif;
       background-color: #1c1b2f;
       color: #f0e6ff;
       text-align: center;
@@ -420,6 +420,31 @@
       background-color: #da190b;
     }
 
+    /* Formulario de Contacto */
+    .contacto-desplegable {
+      margin-top: 30px;
+    }
+
+    .btn-desplegable {
+      background-color: #7b1fa2;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .contenido-desplegable {
+      display: none;
+      background-color: #2e2c47;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
     /* Responsive design */
     @media (min-width: 768px) {
       .cartas-tirada {
@@ -584,6 +609,21 @@
     <h2>🔮 Lectura de Tarot Personalizada (versión paga)</h2>
     <p>Incluye Arcanos Mayores y Menores para una lectura completa</p>
     
+    <!-- Enlace prominente a Buy Me a Coffee -->
+    <div style="background-color: rgba(255, 202, 255, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0; border: 2px solid #ffcaff;">
+      <h3 style="color: #ffcaff; margin-top: 0;">💖 Apoya mi trabajo</h3>
+      <p style="margin: 10px 0;">Si disfrutas de las lecturas, puedes apoyarme con un cafecito ☕</p>
+      <a href="https://buymeacoffee.com/luzdelunatarot" target="_blank" 
+         style="display: inline-block; background-color: #ffcaff; color: #1c1b2f; padding: 12px 24px; 
+                border-radius: 8px; text-decoration: none; font-weight: bold; margin: 10px 0;
+                transition: background-color 0.3s;">
+        ☕ Invitame un Cafecito
+      </a>
+      <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 0;">
+        Tu apoyo me ayuda a mantener este sitio funcionando y crear más contenido ✨
+      </p>
+    </div>
+    
     <div class="formulario-lectura">
       <div class="campo-entrada">
         <label for="tipoTiradaPersonalizada">Tipo de Tirada:</label>
@@ -605,6 +645,14 @@
       </div>
       
       <button class="btn" onclick="mostrarModalPago()">Realizar Lectura</button>
+      
+      <!-- Enlace adicional después del botón -->
+      <p style="margin-top: 15px; font-size: 0.9rem; color: #ccc;">
+        ¿Prefieres hacer una donación? 
+        <a href="https://buymeacoffee.com/luzdelunatarot" target="_blank" style="color: #ffcaff;">
+          Visita mi página de Buy Me a Coffee
+        </a>
+      </p>
     </div>
 
     <div id="resultadoLecturaPersonalizada" class="card" style="display: none;">
@@ -667,6 +715,30 @@
       <p style="font-size: 0.8rem; color: #ccc; margin-top: 15px;">
         🔒 Pago seguro procesado por Stripe. Tus datos están protegidos.
       </p>
+    </div>
+  </div>
+
+  <!-- Formulario de Contacto Desplegable -->
+  <div class="contacto-desplegable">
+    <button class="btn-desplegable" onclick="toggleContacto()">¿Necesitas ayuda? Contáctanos</button>
+    <div id="contenidoContacto" class="contenido-desplegable">
+      <h3>Formulario de Contacto</h3>
+      <form id="formularioContacto" onsubmit="enviarFormularioContacto(event)">
+        <div class="campo-entrada">
+          <label for="nombreContacto">Nombre:</label>
+          <input type="text" id="nombreContacto" required>
+        </div>
+        <div class="campo-entrada">
+          <label for="emailContacto">Email:</label>
+          <input type="email" id="emailContacto" required>
+        </div>
+        <div class="campo-entrada">
+          <label for="mensajeContacto">Mensaje:</label>
+          <textarea id="mensajeContacto" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn">Enviar Mensaje</button>
+      </form>
+      <p id="confirmacionContacto" style="display:none; color: #4caf50; font-weight: bold;">¡Hemos recibido tu mensaje! A la brevedad nos estaremos contactando.</p>
     </div>
   </div>
 
@@ -1325,7 +1397,7 @@
       const lunaciónDias = 29.53058867;
       const fechaReferencia = new Date(2000, 0, 6);
       const diferenciaDias = (hoy - fechaReferencia) / (1000 * 60 * 60 * 24);
-      const cicloActual = diferenciaDias / lunaciónDias;
+      const cicloActual = diferenciaDias / lunaciónDías;
       const faseDecimal = cicloActual - Math.floor(cicloActual);
       
       if (faseDecimal < 0.125) return "🌑 Luna Nueva";
@@ -1337,29 +1409,29 @@
 
     // Funciones para navegación entre secciones
     function mostrarSeccion(seccionId) {
-      document.querySelectorAll('.seccion-oculta').forEach(seccion => {
-        seccion.style.display = 'none';
+      document.querySelectorAll(".seccion-oculta").forEach(seccion => {
+        seccion.style.display = "none";
       });
-      document.getElementById('seccionPrincipal').style.display = 'none';
+      document.getElementById("seccionPrincipal").style.display = "none";
       
-      document.getElementById(seccionId).style.display = 'block';
+      document.getElementById(seccionId).style.display = "block";
       
-      document.querySelectorAll('.btn-seccion').forEach(btn => {
-        btn.classList.remove('activo');
+      document.querySelectorAll(".btn-seccion").forEach(btn => {
+        btn.classList.remove("activo");
       });
-      document.querySelector(`[onclick="mostrarSeccion('${seccionId}')"]`).classList.add('activo');
+      document.querySelector(`[onclick="mostrarSeccion('${seccionId}')"]`).classList.add("activo");
     }
 
     function mostrarSeccionPrincipal() {
-      document.querySelectorAll('.seccion-oculta').forEach(seccion => {
-        seccion.style.display = 'none';
+      document.querySelectorAll(".seccion-oculta").forEach(seccion => {
+        seccion.style.display = "none";
       });
-      document.getElementById('seccionPrincipal').style.display = 'block';
+      document.getElementById("seccionPrincipal").style.display = "block";
       
-      document.querySelectorAll('.btn-seccion').forEach(btn => {
-        btn.classList.remove('activo');
+      document.querySelectorAll(".btn-seccion").forEach(btn => {
+        btn.classList.remove("activo");
       });
-      document.querySelector('[onclick="mostrarSeccionPrincipal()"]').classList.add('activo');
+      document.querySelector("[onclick=\"mostrarSeccionPrincipal()\"]").classList.add("activo");
     }
 
     // Funciones de la carta del día (código original)
@@ -1398,8 +1470,8 @@
     }
 
     function tirarCarta() {
-      const today = new Date().toISOString().split('T')[0];
-      const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
+      const today = new Date().toISOString().split("T")[0];
+      const savedData = JSON.parse(localStorage.getItem("cartaDelDia"));
 
       if (savedData && savedData.fecha === today) {
         alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
@@ -1408,7 +1480,7 @@
       }
 
       const carta = cartas[Math.floor(Math.random() * cartas.length)];
-      localStorage.setItem('cartaDelDia', JSON.stringify({ fecha: today, carta }));
+      localStorage.setItem("cartaDelDia", JSON.stringify({ fecha: today, carta }));
       mostrarCarta(carta);
     }
 
@@ -1423,7 +1495,7 @@
 
       if (navigator.share) {
         navigator.share({
-          title: 'Mi carta del día',
+          title: "Mi carta del día",
           text: mensaje,
           url: window.location.href
         });
@@ -1440,22 +1512,22 @@
         allowTaint: false
       }).then(canvas => {
         canvas.toBlob(blob => {
-          const archivo = new File([blob], 'mi-carta.png', { type: 'image/png' });
+          const archivo = new File([blob], "mi-carta.png", { type: "image/png" });
 
           if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
             navigator.share({
-              title: 'Mi carta del día',
-              text: '¡Mirá mi carta de tarot! ✨',
+              title: "Mi carta del día",
+              text: "¡Mirá mi carta de tarot! ✨",
               files: [archivo]
             })
             .catch(err => {
-              if (err.name !== 'AbortError') {
+              if (err.name !== "AbortError") {
                 console.error("Error al compartir:", err);
                 alert("No se pudo compartir tu carta.");
               }
             });
           } else {
-            const enlace = document.createElement('a');
+            const enlace = document.createElement("a");
             enlace.href = URL.createObjectURL(blob);
             enlace.download = "mi-carta.png";
             enlace.click();
@@ -1473,22 +1545,22 @@
         allowTaint: false
       }).then(canvas => {
         canvas.toBlob(blob => {
-          const archivo = new File([blob], 'mi-carta-natal.png', { type: 'image/png' });
+          const archivo = new File([blob], "mi-carta-natal.png", { type: "image/png" });
 
           if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
             navigator.share({
-              title: 'Mi Carta Natal',
-              text: '¡Mirá mi carta natal astrológica! 🌟',
+              title: "Mi Carta Natal",
+              text: "¡Mirá mi carta natal astrológica! 🌟",
               files: [archivo]
             })
             .catch(err => {
-              if (err.name !== 'AbortError') {
+              if (err.name !== "AbortError") {
                 console.error("Error al compartir:", err);
                 alert("No se pudo compartir tu carta natal.");
               }
             });
           } else {
-            const enlace = document.createElement('a');
+            const enlace = document.createElement("a");
             enlace.href = URL.createObjectURL(blob);
             enlace.download = "mi-carta-natal.png";
             enlace.click();
@@ -1518,11 +1590,11 @@
       }
 
       calcularSignoSolar(fecha) {
-        return calcularSignoZodiacal(fecha).replace(/♈|♉|♊|♋|♌|♍|♎|♏|♐|♑|♒|♓/, '').trim();
+        return calcularSignoZodiacal(fecha).replace(/♈|♉|♊|♋|♌|♍|♎|♏|♐|♑|♒|♓/, "").trim();
       }
 
       calcularAscendente(fecha, hora, latitud) {
-        const fechaNac = new Date(fecha + 'T' + hora);
+        const fechaNac = new Date(fecha + "T" + hora);
         const horaDecimal = fechaNac.getHours() + fechaNac.getMinutes() / 60;
         const indiceSigno = Math.floor((horaDecimal * 0.5 + latitud * 0.1) % 12);
         return this.signos[indiceSigno];
@@ -1531,7 +1603,7 @@
       generarPosicionesPlanetarias(fecha) {
         const posiciones = {};
         const fechaNac = new Date(fecha);
-        const diasDesdeEpoca = Math.floor((fechaNac - new Date('2000-01-01')) / (1000 * 60 * 60 * 24));
+        const diasDesdeEpoca = Math.floor((fechaNac - new Date("2000-01-01")) / (1000 * 60 * 60 * 24));
         
         this.planetas.forEach((planeta, index) => {
           let velocidadOrbital;
@@ -1674,7 +1746,7 @@
         return {
           tirada: tirada,
           cartas: cartasSeleccionadas,
-          fecha: new Date().toISOString().split('T')[0]
+          fecha: new Date().toISOString().split("T")[0]
         };
       }
 
@@ -1750,7 +1822,7 @@
       }
 
       guardarLectura(lectura, tipo = "personalizada") {
-        const lecturas = JSON.parse(localStorage.getItem('lecturasGuardadas') || '[]');
+        const lecturas = JSON.parse(localStorage.getItem("lecturasGuardadas") || "[]");
         const nuevaLectura = {
           id: Date.now(),
           tipo: tipo,
@@ -1764,12 +1836,12 @@
           lecturas.splice(0, lecturas.length - 10);
         }
         
-        localStorage.setItem('lecturasGuardadas', JSON.stringify(lecturas));
+        localStorage.setItem("lecturasGuardadas", JSON.stringify(lecturas));
         return nuevaLectura.id;
       }
 
       obtenerLecturasGuardadas() {
-        return JSON.parse(localStorage.getItem('lecturasGuardadas') || '[]');
+        return JSON.parse(localStorage.getItem("lecturasGuardadas") || "[]");
       }
     }
 
@@ -1831,7 +1903,7 @@
       
       if (navigator.share) {
         navigator.share({
-          title: 'Mi Carta Natal',
+          title: "Mi Carta Natal",
           text: mensaje,
           url: window.location.href
         });
@@ -1919,6 +1991,18 @@
       // Simulación de pago exitoso
       // En una implementación real, aquí se integraría con Stripe
       
+      // Guardar indicador de pago exitoso
+      const pagoExitoso = {
+        tipoTirada: tipoTiradaActual,
+        pregunta: preguntaActual,
+        moneda: monedaSeleccionada,
+        precio: preciosLecturas[tipoTiradaActual][monedaSeleccionada],
+        timestamp: Date.now(),
+        fecha: new Date().toISOString().split("T")[0]
+      };
+      
+      localStorage.setItem("lecturaPersonalizadaPagada", JSON.stringify(pagoExitoso));
+      
       alert("🎉 ¡Pago procesado exitosamente! Preparando tu lectura...");
       cerrarModalPago();
       
@@ -1932,7 +2016,48 @@
       const lectura = lecturaPersonalizada.seleccionarCartas(tipoTiradaActual);
       const interpretacion = lecturaPersonalizada.interpretarTirada(lectura, preguntaActual);
       
+      // Guardar la lectura completa junto con el pago
+      const lecturaCompleta = {
+        pago: JSON.parse(localStorage.getItem("lecturaPersonalizadaPagada")),
+        interpretacion: interpretacion,
+        timestamp: Date.now()
+      };
+      
+      localStorage.setItem("ultimaLecturaPersonalizada", JSON.stringify(lecturaCompleta));
+      
       mostrarLecturaPersonalizada(interpretacion);
+    }
+
+    function verificarLecturaPagada() {
+      const lecturaPagada = localStorage.getItem("lecturaPersonalizadaPagada");
+      const ultimaLectura = localStorage.getItem("ultimaLecturaPersonalizada");
+      
+      if (lecturaPagada && ultimaLectura) {
+        const datosLectura = JSON.parse(ultimaLectura);
+        const datosPago = JSON.parse(lecturaPagada);
+        
+        // Verificar si la lectura es del mismo día
+        const hoy = new Date().toISOString().split("T")[0];
+        if (datosPago.fecha === hoy) {
+          // Restaurar variables globales
+          tipoTiradaActual = datosPago.tipoTirada;
+          preguntaActual = datosPago.pregunta;
+          
+          // Mostrar la lectura guardada
+          mostrarLecturaPersonalizada(datosLectura.interpretacion);
+          
+          // Cambiar a la sección de lectura personalizada
+          mostrarSeccion("seccionLecturaPersonalizada");
+          
+          return true;
+        } else {
+          // Limpiar datos de días anteriores
+          localStorage.removeItem("lecturaPersonalizadaPagada");
+          localStorage.removeItem("ultimaLecturaPersonalizada");
+        }
+      }
+      
+      return false;
     }
 
     function mostrarLecturaPersonalizada(interpretacion) {
@@ -1967,7 +2092,7 @@
       
       document.getElementById("resumenGeneralLectura").textContent = interpretacion.resumenGeneral;
       document.getElementById("resultadoLecturaPersonalizada").style.display = "block";
-      document.getElementById("resultadoLecturaPersonalizada").scrollIntoView({ behavior: 'smooth' });
+      document.getElementById("resultadoLecturaPersonalizada").scrollIntoView({ behavior: "smooth" });
     }
 
     function compartirLecturaPersonalizada() {
@@ -1978,7 +2103,7 @@
       
       if (navigator.share) {
         navigator.share({
-          title: 'Mi Lectura de Tarot Personalizada',
+          title: "Mi Lectura de Tarot Personalizada",
           text: mensaje,
           url: window.location.href
         });
@@ -2001,18 +2126,47 @@
       alert("Lectura guardada exitosamente. Puedes verla en tu historial.");
     }
 
-    // Mostrar automáticamente si ya sacó una carta hoy
-    window.addEventListener('DOMContentLoaded', () => {
-      const today = new Date().toISOString().split('T')[0];
-      const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
-      if (savedData && savedData.fecha === today) {
-        mostrarCarta(savedData.carta);
+    // Funciones para el formulario de contacto
+    function toggleContacto() {
+      const contenido = document.getElementById("contenidoContacto");
+      if (contenido.style.display === "block") {
+        contenido.style.display = "none";
+      } else {
+        contenido.style.display = "block";
+      }
+    }
+
+    function enviarFormularioContacto(event) {
+      event.preventDefault();
+      const nombre = document.getElementById("nombreContacto").value;
+      const email = document.getElementById("emailContacto").value;
+      const mensaje = document.getElementById("mensajeContacto").value;
+
+      // Simulación de envío de correo
+      console.log(`Mensaje de: ${nombre} (${email})`);
+      console.log(`Mensaje: ${mensaje}`);
+
+      // Mostrar confirmación
+      document.getElementById("formularioContacto").style.display = "none";
+      document.getElementById("confirmacionContacto").style.display = "block";
+    }
+
+    // Mostrar automáticamente si ya sacó una carta hoy o tiene una lectura pagada
+    window.addEventListener("DOMContentLoaded", () => {
+      // Primero verificar si hay una lectura personalizada pagada
+      if (!verificarLecturaPagada()) {
+        // Si no hay lectura pagada, verificar carta del día
+        const today = new Date().toISOString().split("T")[0];
+        const savedData = JSON.parse(localStorage.getItem("cartaDelDia"));
+        if (savedData && savedData.fecha === today) {
+          mostrarCarta(savedData.carta);
+        }
       }
     });
 
     // Cerrar modal al hacer clic fuera de él
-    window.addEventListener('click', (event) => {
-      const modal = document.getElementById('modalPago');
+    window.addEventListener("click", (event) => {
+      const modal = document.getElementById("modalPago");
       if (event.target === modal) {
         cerrarModalPago();
       }
@@ -2021,7 +2175,4 @@
   
 </body>
 </html>
-
-
-
 
