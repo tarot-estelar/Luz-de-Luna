@@ -20,7 +20,7 @@
   <meta property="og:title" content="Luz de Luna - Tarot | Lecturas y Carta Natal">
   <meta property="og:description" content="Conecta con tu energía hoy. Lecturas de tarot personalizadas y tu carta natal astrológica.">
   <meta property="og:image" content="https://raw.githubusercontent.com/tarot-estelar/Tarot-Estelar/main/la%20luna%203.png">
-  <meta property="og:url" content="https://luzdeluna.website">
+  <meta property="og:url" content="https://tudominio.com">
   <meta property="og:type" content="website">
   
   <!-- Twitter Card Meta Tags -->
@@ -420,29 +420,6 @@
       background-color: #da190b;
     }
 
-    /* Estilos para formulario de contacto */
-    .formulario-contacto {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .formulario-contacto input,
-    .formulario-contacto textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 14px;
-    }
-
-    .formulario-contacto textarea {
-      height: 120px;
-      resize: vertical;
-    }
-
     /* Responsive design */
     @media (min-width: 768px) {
       .cartas-tirada {
@@ -488,7 +465,6 @@
     <button class="btn-seccion activo" onclick="mostrarSeccionPrincipal()">🔮 Carta del Día</button>
     <button class="btn-seccion" onclick="mostrarSeccion('seccionCartaNatal')">🌟 Carta Natal</button>
     <button class="btn-seccion" onclick="mostrarSeccion('seccionLecturaPersonalizada')">🃏 Lectura Personalizada</button>
-    <button class="btn-seccion" onclick="mostrarSeccion('seccionContacto')">📧 Contacto</button>
   </div>
 
   <!-- Sección Principal (Carta del Día) -->
@@ -654,48 +630,6 @@
     </div>
   </div>
 
-  <!-- Sección de Contacto -->
-  <div id="seccionContacto" class="seccion-oculta">
-    <h2>📧 Contacto</h2>
-    <p>¿Tienes alguna pregunta o necesitas ayuda? Contáctanos</p>
-    
-    <div class="formulario-contacto">
-      <form id="formularioContacto" onsubmit="enviarContacto(event)">
-        <div class="campo-entrada">
-          <label for="nombreContacto">Nombre:</label>
-          <input type="text" id="nombreContacto" name="nombre" required>
-        </div>
-        
-        <div class="campo-entrada">
-          <label for="emailContacto">Email:</label>
-          <input type="email" id="emailContacto" name="email" required>
-        </div>
-        
-        <div class="campo-entrada">
-          <label for="asuntoContacto">Asunto:</label>
-          <input type="text" id="asuntoContacto" name="asunto" required>
-        </div>
-        
-        <div class="campo-entrada">
-          <label for="mensajeContacto">Mensaje:</label>
-          <textarea id="mensajeContacto" name="mensaje" required></textarea>
-        </div>
-        
-        <button type="submit" class="btn">Enviar Mensaje</button>
-      </form>
-      
-      <div id="mensajeEnviado" style="display: none; margin-top: 20px; padding: 15px; background-color: rgba(76, 175, 80, 0.2); border-radius: 6px; color: #4caf50;">
-        ¡Mensaje enviado correctamente! Te responderemos pronto.
-      </div>
-      
-      <div style="margin-top: 30px; padding: 20px; background-color: rgba(255, 255, 255, 0.05); border-radius: 8px;">
-        <h4>Otras formas de contacto:</h4>
-        <p>📧 Email directo: <a href="mailto:menteactive@gmail.com">menteactive@gmail.com</a></p>
-        <p>💬 También puedes escribirnos directamente al email para consultas rápidas</p>
-      </div>
-    </div>
-  </div>
-
   <!-- Modal de Pago -->
   <div id="modalPago" class="modal">
     <div class="modal-contenido">
@@ -726,12 +660,12 @@
       <p>Tu pregunta: <em id="preguntaModal"></em></p>
       
       <div style="text-align: center; margin-top: 20px;">
-        <button class="btn-pagar" onclick="procesarPago()">💳 Pagar con Buy Me a Coffee</button>
+        <button class="btn-pagar" onclick="procesarPago()">💳 Pagar Ahora</button>
         <button class="btn-cancelar" onclick="cerrarModalPago()">❌ Cancelar</button>
       </div>
       
       <p style="font-size: 0.8rem; color: #ccc; margin-top: 15px;">
-        🔒 Pago seguro procesado por Buy Me a Coffee. Tus datos están protegidos.
+        🔒 Pago seguro procesado por Stripe. Tus datos están protegidos.
       </p>
     </div>
   </div>
@@ -761,7 +695,7 @@
     "@type": "WebPage",
     "name": "Luz de Luna - Tarot",
     "description": "Lecturas de tarot personalizadas y carta natal astrológica para conectar con tu energía.",
-    "url": "https://luzdeluna.website/",
+    "url": "https://tudominio.com/",
     "publisher": {
       "@type": "Organization",
       "name": "Luz de Luna - Tarot"
@@ -1428,7 +1362,7 @@
       document.querySelector('[onclick="mostrarSeccionPrincipal()"]').classList.add('activo');
     }
 
-    // Funciones de la carta del día (código original corregido)
+    // Funciones de la carta del día (código original)
     function mostrarCarta(carta) {
       document.getElementById("nombreCarta").textContent = carta.nombre;
       document.getElementById("imagenCarta").src = carta.imagen;
@@ -1456,7 +1390,6 @@
       }
 
       document.getElementById("mensajeBarajar").style.display = "block";
-      document.getElementById("resultado").style.display = "none";
 
       setTimeout(() => {
         document.getElementById("mensajeBarajar").style.display = "none";
@@ -1466,7 +1399,7 @@
 
     function tirarCarta() {
       const today = new Date().toISOString().split('T')[0];
-      const savedData = JSON.parse(localStorage.getItem('cartaDelDia') || 'null');
+      const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
 
       if (savedData && savedData.fecha === today) {
         alert("Ya sacaste tu carta del día ✨ Volvé mañana.");
@@ -1983,12 +1916,16 @@
     }
 
     function procesarPago() {
-      // Redirigir a Buy Me a Coffee
-      const url = "https://www.buymeacoffee.com/luzdelunatarot";
-      window.open(url, '_blank');
+      // Simulación de pago exitoso
+      // En una implementación real, aquí se integraría con Stripe
       
-      alert("🎉 ¡Gracias por tu apoyo! Una vez realizado el pago, contáctanos para recibir tu lectura personalizada.");
+      alert("🎉 ¡Pago procesado exitosamente! Preparando tu lectura...");
       cerrarModalPago();
+      
+      // Simular delay de procesamiento
+      setTimeout(() => {
+        realizarLecturaPersonalizada();
+      }, 1500);
     }
 
     function realizarLecturaPersonalizada() {
@@ -2064,35 +2001,10 @@
       alert("Lectura guardada exitosamente. Puedes verla en tu historial.");
     }
 
-    // Función para enviar contacto
-    function enviarContacto(event) {
-      event.preventDefault();
-      
-      const nombre = document.getElementById("nombreContacto").value;
-      const email = document.getElementById("emailContacto").value;
-      const asunto = document.getElementById("asuntoContacto").value;
-      const mensaje = document.getElementById("mensajeContacto").value;
-      
-      // Crear el enlace mailto
-      const mailtoLink = `mailto:menteactive@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(`Nombre: ${nombre}\nEmail: ${email}\n\nMensaje:\n${mensaje}`)}`;
-      
-      // Abrir el cliente de correo
-      window.location.href = mailtoLink;
-      
-      // Mostrar mensaje de confirmación
-      document.getElementById("mensajeEnviado").style.display = "block";
-      document.getElementById("formularioContacto").reset();
-      
-      // Ocultar el mensaje después de 5 segundos
-      setTimeout(() => {
-        document.getElementById("mensajeEnviado").style.display = "none";
-      }, 5000);
-    }
-
     // Mostrar automáticamente si ya sacó una carta hoy
     window.addEventListener('DOMContentLoaded', () => {
       const today = new Date().toISOString().split('T')[0];
-      const savedData = JSON.parse(localStorage.getItem('cartaDelDia') || 'null');
+      const savedData = JSON.parse(localStorage.getItem('cartaDelDia'));
       if (savedData && savedData.fecha === today) {
         mostrarCarta(savedData.carta);
       }
@@ -2109,4 +2021,6 @@
   
 </body>
 </html>
+
+
 
